@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Loyalty6 Energy Services</title>
+    <meta name="description" content="View our gallery of oil and gas services, including crew truck work, construction projects, and maintenance operations.">
+    <link rel="icon" type="image/jpeg" href="images/thumbnail.jpeg">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .gallery-section {
+            padding: 8rem 0 4rem;
+            background-color: var(--light-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 20px;
+            z-index: 1001;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .lightbox-nav {
+                font-size: 24px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/l6logonobg.png" alt="Loyalty6 Energy Services Logo" class="logo-image">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Gallery</h2>
+                <p>Experience our work through our collection of project images</p>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <span class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <span class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</span>
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="images/l6logonobg.png" alt="Loyalty6 Energy Services Logo" class="footer-main-logo">
+                    </a>
+                    <a href="https://www.ccab.com/main/ccab_member/loyalty-6-energy-services-ltd/" target="_blank">
+                        <img src="images/cciblogo.png" alt="CCIB Logo" class="footer-ccib-logo">
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li>Crew Truck Work</li>
+                        <li>General Labourers</li>
+                        <li>Hot Shot Services</li>
+                        <li>Mechanical Work</li>
+                        <li>Construction</li>
+                        <li>Maintenance</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dawson Creek, BC</p>
+                    <p><i class="fas fa-phone-alt"></i> (250) 719-4573</p>
+                    <p><i class="fas fa-envelope"></i> loyalty6energy@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Loyalty6 Energy Services LTD. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery functionality
+        const galleryData = [
+            {
+                image: "crew-truck.jpeg",
+                caption: "Loyalty6 Crew Truck Services"
+            },
+            {
+                image: "signal-2025-03-14-134008.jpeg",
+                caption: "Field Operations"
+            },
+            {
+                image: "signal-2025-03-14-134008_002.jpeg",
+                caption: "Equipment Maintenance"
+            },
+            {
+                image: "signal-2025-03-14-134008_004.jpeg",
+                caption: "Site Operations"
+            },
+            {
+                image: "signal-2025-03-14-134008_005.jpeg",
+                caption: "Heavy Equipment Work"
+            },
+            {
+                image: "signal-2025-03-14-134008_006.jpeg",
+                caption: "Construction Services"
+            },
+            {
+                image: "signal-2025-03-14-134008_007.jpeg",
+                caption: "Field Maintenance"
+            },
+            {
+                image: "signal-2025-03-14-134008_008.jpeg",
+                caption: "Site Inspection"
+            },
+            {
+                image: "signal-2025-03-14-134008_009.jpeg",
+                caption: "Equipment Operation"
+            },
+            {
+                image: "signal-2025-03-14-134008_010.jpeg",
+                caption: "Field Work"
+            },
+            {
+                image: "signal-2025-03-14-134153.jpeg",
+                caption: "Project Management"
+            },
+            {
+                image: "signal-2025-03-14-134153_002.jpeg",
+                caption: "Safety Protocols"
+            },
+            {
+                image: "signal-2025-03-14-134153_003.jpeg",
+                caption: "Site Development"
+            },
+            {
+                image: "signal-2025-03-14-134153_004.jpeg",
+                caption: "Equipment Installation"
+            },
+            {
+                image: "signal-2025-03-14-134153_005.jpeg",
+                caption: "Technical Operations"
+            },
+            {
+                image: "signal-2025-03-14-134153_006.jpeg",
+                caption: "Field Equipment"
+            },
+            {
+                image: "signal-2025-03-14-134153_007.jpeg",
+                caption: "Construction Projects"
+            },
+            {
+                image: "signal-2025-03-14-134153_008.jpeg",
+                caption: "Site Safety"
+            },
+            {
+                image: "signal-2025-03-14-134153_009.jpeg",
+                caption: "Equipment Deployment"
+            },
+            {
+                image: "signal-2025-03-14-134153_010.jpeg",
+                caption: "Field Operations"
+            },
+            {
+                image: "signal-2025-03-14-134153_011.jpeg",
+                caption: "Site Maintenance"
+            },
+            {
+                image: "signal-2025-03-14-134153_012.jpeg",
+                caption: "Quality Control"
+            },
+            {
+                image: "signal-2025-03-14-134153_013.jpeg",
+                caption: "Safety Inspection"
+            },
+            {
+                image: "signal-2025-03-14-134153_014.jpeg",
+                caption: "Project Planning"
+            }
+        ];
+
+        function createGalleryItem(image, caption) {
+            return `
+                <div class="gallery-item" data-image="images/gallery/${image}" data-caption="${caption}">
+                    <img src="images/gallery/${image}" alt="${caption}">
+                    <div class="gallery-item-overlay">
+                        <h4>${caption}</h4>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        let currentImageIndex = 0;
+
+        function openLightbox(image, caption, index) {
+            lightboxImage.src = image;
+            lightboxCaption.textContent = caption;
+            currentImageIndex = index;
+            lightbox.classList.add('active');
+            updateNavigationVisibility();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function updateNavigationVisibility() {
+            lightboxPrev.style.display = currentImageIndex > 0 ? 'block' : 'none';
+            lightboxNext.style.display = currentImageIndex < galleryData.length - 1 ? 'block' : 'none';
+        }
+
+        function navigateGallery(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex >= 0 && currentImageIndex < galleryData.length) {
+                const item = galleryData[currentImageIndex];
+                lightboxImage.src = `images/gallery/${item.image}`;
+                lightboxCaption.textContent = item.caption;
+                updateNavigationVisibility();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('galleryGrid').addEventListener('click', (e) => {
+            const galleryItem = e.target.closest('.gallery-item');
+            if (galleryItem) {
+                const image = galleryItem.dataset.image;
+                const caption = galleryItem.dataset.caption;
+                const index = Array.from(galleryItem.parentElement.children).indexOf(galleryItem);
+                openLightbox(image, caption, index);
+            }
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => navigateGallery(-1));
+        lightboxNext.addEventListener('click', () => navigateGallery(1));
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigateGallery(-1);
+                if (e.key === 'ArrowRight') navigateGallery(1);
+            }
+        });
+
+        // Initialize gallery
+        function initGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryData.forEach((item, index) => {
+                galleryGrid.innerHTML += createGalleryItem(item.image, item.caption);
+            });
+        }
+
+        // Call initGallery when the page loads
+        document.addEventListener('DOMContentLoaded', initGallery);
+    </script>
+</body>
+</html> 
