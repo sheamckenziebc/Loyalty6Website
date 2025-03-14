@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Loyalty6 Energy Services</title>
+    <meta name="description" content="Explore our comprehensive range of oil and gas services including crew truck work, general labor, hot shot services, mechanical work, construction, and maintenance.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .service-detail-section {
+            padding: 8rem 0 4rem;
+            background-color: var(--light-color);
+        }
+
+        .service-detail {
+            background: #fff;
+            border-radius: 8px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .service-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-detail .icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .service-detail h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .service-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .service-detail-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .service-detail-text ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .service-detail-text ul li {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .service-detail-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .service-detail-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media screen and (max-width: 768px) {
+            .service-detail-content {
+                grid-template-columns: 1fr;
+            }
+
+            .service-detail {
+                padding: 2rem;
+            }
+
+            .service-detail h3 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/l6logonobg.png" alt="Loyalty6 Energy Services Logo" class="logo-image">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="service-detail-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive oil and gas services delivered with precision and dedication</p>
+            </div>
+
+            <div id="crew-truck" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-truck-pickup"></i>
+                </div>
+                <h3>CREW TRUCK WORK</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>Our crew truck services provide reliable transportation and mobile work capabilities for remote locations across British Columbia. We ensure your team and equipment reach their destination safely and on time.</p>
+                        <ul>
+                            <li>24/7 crew transportation services</li>
+                            <li>Fully equipped mobile work units</li>
+                            <li>Experienced drivers familiar with remote locations</li>
+                            <li>Regular maintenance and safety inspections</li>
+                            <li>GPS tracking and communication systems</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/crew-truck.jpg" alt="Loyalty6 Crew Truck Services">
+                    </div>
+                </div>
+            </div>
+
+            <div id="general-labor" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h3>GENERAL LABOURERS</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>Our skilled general labor team is trained to handle a wide range of construction and maintenance tasks in the oil and gas industry. We pride ourselves on our work ethic, safety consciousness, and attention to detail.</p>
+                        <ul>
+                            <li>Site preparation and cleanup</li>
+                            <li>Equipment handling and maintenance</li>
+                            <li>Safety-certified personnel</li>
+                            <li>Flexible workforce scaling</li>
+                            <li>Experienced in various oil & gas environments</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/general-labor.jpg" alt="Loyalty6 General Labor Services">
+                    </div>
+                </div>
+            </div>
+
+            <div id="hot-shot" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>HOT SHOT SERVICES</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>When time is critical, our hot shot services deliver. We specialize in rapid response transportation for urgent equipment and material needs, ensuring your operations continue without interruption.</p>
+                        <ul>
+                            <li>24/7 emergency delivery service</li>
+                            <li>Rapid response times</li>
+                            <li>Secure cargo handling</li>
+                            <li>Real-time delivery tracking</li>
+                            <li>Experienced drivers for all conditions</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/hot-shot.jpg" alt="Loyalty6 Hot Shot Services">
+                    </div>
+                </div>
+            </div>
+
+            <div id="mechanical" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-wrench"></i>
+                </div>
+                <h3>MECHANICAL WORK</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>Our mechanical services team provides expert maintenance and repair for all types of oil and gas equipment and machinery. We ensure your equipment operates at peak efficiency with minimal downtime.</p>
+                        <ul>
+                            <li>Preventive maintenance programs</li>
+                            <li>Emergency repair services</li>
+                            <li>Equipment diagnostics and testing</li>
+                            <li>Component replacement and upgrades</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/mechanical.jpg" alt="Loyalty6 Mechanical Services">
+                    </div>
+                </div>
+            </div>
+
+            <div id="construction" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-hammer"></i>
+                </div>
+                <h3>CONSTRUCTION</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>Our construction services encompass all aspects of oil and gas facility infrastructure. From initial planning to final implementation, we deliver quality results that meet or exceed industry standards.</p>
+                        <ul>
+                            <li>Pipeline construction and installation</li>
+                            <li>Facility construction and expansion</li>
+                            <li>Infrastructure development</li>
+                            <li>Project management services</li>
+                            <li>Quality control and inspection</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/construction.jpg" alt="Loyalty6 Construction Services">
+                    </div>
+                </div>
+            </div>
+
+            <div id="maintenance" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>MAINTENANCE</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>Regular maintenance is crucial for the longevity and efficiency of oil and gas facilities. Our maintenance services help prevent costly downtime and ensure smooth operations.</p>
+                        <ul>
+                            <li>Scheduled maintenance programs</li>
+                            <li>Equipment inspection and testing</li>
+                            <li>Preventive maintenance</li>
+                            <li>Emergency repair services</li>
+                            <li>Maintenance documentation and reporting</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/maintenance.jpg" alt="Loyalty6 Maintenance Services">
+                    </div>
+                </div>
+            </div>
+
+            <div id="turnarounds" class="service-detail">
+                <div class="icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>TURNAROUNDS</h3>
+                <div class="service-detail-content">
+                    <div class="service-detail-text">
+                        <p>Our turnaround services focus on minimizing downtime while maximizing efficiency. We provide comprehensive planning and execution of facility turnarounds to keep your operations running smoothly.</p>
+                        <ul>
+                            <li>Detailed turnaround planning</li>
+                            <li>Resource coordination</li>
+                            <li>Safety management</li>
+                            <li>Schedule optimization</li>
+                            <li>Quality control and documentation</li>
+                        </ul>
+                    </div>
+                    <div class="service-detail-image">
+                        <img src="images/turnaround.jpg" alt="Loyalty6 Turnaround Services">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="images/l6logonobg.png" alt="Loyalty6 Energy Services Logo" class="footer-main-logo">
+                    </a>
+                    <a href="https://www.ccab.com/main/ccab_member/loyalty-6-energy-services-ltd/" target="_blank">
+                        <img src="images/cciblogo.png" alt="CCIB Logo" class="footer-ccib-logo">
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li>Crew Truck Work</li>
+                        <li>General Labourers</li>
+                        <li>Hot Shot Services</li>
+                        <li>Mechanical Work</li>
+                        <li>Construction</li>
+                        <li>Maintenance</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dawson Creek, BC</p>
+                    <p><i class="fas fa-phone-alt"></i> (250) 719-4573</p>
+                    <p><i class="fas fa-envelope"></i> loyalty6energy@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Loyalty6 Energy Services LTD. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
