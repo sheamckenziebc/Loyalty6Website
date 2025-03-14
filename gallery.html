@@ -43,22 +43,6 @@
             object-fit: cover;
         }
 
-        .gallery-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            padding: 1rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-item-overlay {
-            opacity: 1;
-        }
-
         /* Lightbox styles */
         .lightbox {
             display: none;
@@ -87,16 +71,6 @@
             max-width: 100%;
             max-height: 90vh;
             object-fit: contain;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            right: 0;
-            color: white;
-            text-align: center;
-            padding: 10px;
         }
 
         .lightbox-close {
@@ -185,7 +159,6 @@
         <span class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</span>
         <div class="lightbox-content">
             <img src="" alt="" class="lightbox-image" id="lightboxImage">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
 
@@ -271,10 +244,6 @@
                 caption: "Site Inspection"
             },
             {
-                image: "signal-2025-03-14-134008_009.jpeg",
-                caption: "Equipment Operation"
-            },
-            {
                 image: "signal-2025-03-14-134008_010.jpeg",
                 caption: "Field Work"
             },
@@ -321,28 +290,13 @@
             {
                 image: "signal-2025-03-14-134153_011.jpeg",
                 caption: "Site Maintenance"
-            },
-            {
-                image: "signal-2025-03-14-134153_012.jpeg",
-                caption: "Quality Control"
-            },
-            {
-                image: "signal-2025-03-14-134153_013.jpeg",
-                caption: "Safety Inspection"
-            },
-            {
-                image: "signal-2025-03-14-134153_014.jpeg",
-                caption: "Project Planning"
             }
         ];
 
         function createGalleryItem(image, caption) {
             return `
-                <div class="gallery-item" data-image="images/gallery/${image}" data-caption="${caption}">
+                <div class="gallery-item" data-image="images/gallery/${image}">
                     <img src="images/gallery/${image}" alt="${caption}">
-                    <div class="gallery-item-overlay">
-                        <h4>${caption}</h4>
-                    </div>
                 </div>
             `;
         }
@@ -350,15 +304,13 @@
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxCaption = document.getElementById('lightboxCaption');
         const lightboxClose = document.getElementById('lightboxClose');
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
         let currentImageIndex = 0;
 
-        function openLightbox(image, caption, index) {
+        function openLightbox(image, index) {
             lightboxImage.src = image;
-            lightboxCaption.textContent = caption;
             currentImageIndex = index;
             lightbox.classList.add('active');
             updateNavigationVisibility();
@@ -378,7 +330,6 @@
             if (currentImageIndex >= 0 && currentImageIndex < galleryData.length) {
                 const item = galleryData[currentImageIndex];
                 lightboxImage.src = `images/gallery/${item.image}`;
-                lightboxCaption.textContent = item.caption;
                 updateNavigationVisibility();
             }
         }
@@ -388,9 +339,8 @@
             const galleryItem = e.target.closest('.gallery-item');
             if (galleryItem) {
                 const image = galleryItem.dataset.image;
-                const caption = galleryItem.dataset.caption;
                 const index = Array.from(galleryItem.parentElement.children).indexOf(galleryItem);
-                openLightbox(image, caption, index);
+                openLightbox(image, index);
             }
         });
 
