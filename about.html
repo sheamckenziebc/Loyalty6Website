@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Loyalty6 Energy Services</title>
     <meta name="description" content="Learn about Loyalty 6 Energy Services, a locally owned and operated Oil and Gas Service company in Dawson Creek, British Columbia.">
+    <link rel="icon" type="image/jpeg" href="images/thumbnail.jpeg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,8 +87,9 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 2rem;
+            overflow-y: auto;
         }
         
         .about-overlay-content p {
@@ -95,6 +97,35 @@
             font-size: 1.1rem;
             line-height: 1.7;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-overlay-content h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-overlay-content ul {
+            list-style: none;
+            margin: 0 0 1.5rem 1rem;
+        }
+
+        .about-overlay-content ul li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .about-overlay-content ul li:before {
+            content: "•";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
         }
 
         .logo-container {
@@ -190,8 +221,36 @@
             <div class="about-overlay">
                 <img src="images/ourservices.jpg" alt="Loyalty6 Energy Services Team" class="about-overlay-image">
                 <div class="about-overlay-content">
-                    <p>Loyalty 6 Energy Services is a locally owned and operated Oil and Gas Service company based in Dawson Creek, British Columbia. Founded in 2017, we take pride in delivering top quality pipefitting services from our highly skilled team committed to fueling success with integrity, pride, loyalty, and unmatched quality.</p>
-                    <p>Our expertise spans a wide range of services, including construction, decommissioning, maintenance, pipeline layout, and comprehensive turnaround work and planning. At Loyalty 6 Energy Services, we fuel success by exceeding expectations with a focus on professionalism, precision, and dedication.</p>
+                    <p>Loyalty 6 Energy Services is a locally owned and operated oil and gas service company based in Dawson Creek, British Columbia. Since our founding in 2017, we have built a reputation for excellence, reliability, and integrity, becoming a trusted partner in the energy sector.</p>
+                    
+                    <p>We specialize in a comprehensive range of pipefitting and energy services, including:</p>
+                    
+                    <ul>
+                        <li>Construction – Expert solutions for oil and gas infrastructure</li>
+                        <li>Decommissioning – Safe and efficient facility shutdowns</li>
+                        <li>Maintenance – Reliable upkeep to maximize operational efficiency</li>
+                        <li>Pipeline Layout – Precision planning and execution</li>
+                        <li>Turnaround Work & Planning – Strategic solutions for plant and facility overhauls</li>
+                    </ul>
+
+                    <p>Our highly skilled team is dedicated to delivering top-quality workmanship while upholding the highest industry standards. We take pride in our commitment to safety, efficiency, and customer satisfaction, ensuring that every project is completed with precision and professionalism.</p>
+
+                    <h3>Our Values: The Foundation of Our Success</h3>
+                    <p>At Loyalty 6 Energy Services, we operate with a strong set of core values that define who we are and how we do business:</p>
+
+                    <ul>
+                        <li>Integrity – Honest, transparent, and ethical business practices.</li>
+                        <li>Pride – Commitment to excellence in every project, regardless of size.</li>
+                        <li>Loyalty – Dedication to our clients, team, and industry.</li>
+                        <li>Quality – Uncompromising standards in every aspect of our work.</li>
+                    </ul>
+
+                    <h3>Commitment to Indigenous Business & Partnerships</h3>
+                    <p>Loyalty 6 Energy Services is a proud member of the Canadian Council for Indigenous Business (CCIB), reflecting our dedication to fostering meaningful Indigenous partnerships, economic growth, and sustainable business practices. We believe in building strong relationships with Indigenous communities and actively supporting inclusive and diverse industry participation.</p>
+
+                    <h3>Let's Build Success Together</h3>
+                    <p>At Loyalty 6 Energy Services, we don't just complete projects—we fuel success. Whether you need expert pipefitting, pipeline solutions, or maintenance services, our team is ready to exceed expectations.</p>
+
                     <div class="logo-container">
                         <img src="images/loyalty6logo.jpeg" alt="Loyalty6 Energy Services Logo" class="about-logo">
                         <a href="#" target="_blank">
