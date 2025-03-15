@@ -1,5 +1,5 @@
 /*
- * Loyalty6 Energy Services - Main JavaScript
+ * Loyalty 6 Energy Services - Main JavaScript
  * Author: Cascade AI
  * Date: March 14, 2025
  */

@@ -1,10 +1,10 @@
-# Loyalty6 Energy Services Website
+# Loyalty 6 Energy Services Website
 
-A professional website for Loyalty6 Energy Services, an Oil and Gas Service company based in Dawson Creek, British Columbia.
+A professional website for Loyalty 6 Energy Services, an Oil and Gas Service company based in Dawson Creek, British Columbia.
 
 ## Overview
 
-This website showcases Loyalty6 Energy Services' expertise in the oil and gas industry, highlighting their services, specialties, and company information. The website is designed to be responsive, modern, and user-friendly.
+This website showcases Loyalty 6 Energy Services' expertise in the oil and gas industry, highlighting their services, specialties, and company information. The website is designed to be responsive, modern, and user-friendly.
 
 ## Features
 
