@@ -76,6 +76,30 @@
             background-color: var(--light-text);
         }
 
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--darker-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        }
+
         .gallery-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/turn.jpeg');
         }
@@ -162,32 +186,73 @@
 
         /* Lightbox styles */
         .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
             background-color: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .lightbox-caption {
-            color: var(--light-text);
+        .lightbox-image {
+            display: block;
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
         }
 
         .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
             color: var(--light-text);
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
         }
 
-        .lightbox-close:hover {
-            color: var(--accent-color);
-        }
-
-        .lightbox-nav button {
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             color: var(--light-text);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
             background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            z-index: 1001;
+            transition: background-color 0.3s ease;
         }
 
-        .lightbox-nav button:hover {
+        .lightbox-prev {
+            left: 2rem;
+        }
+
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        .lightbox-nav:hover {
             background-color: var(--accent-color);
         }
     </style>
@@ -374,8 +439,8 @@
 
         function createGalleryItem(image, caption) {
             return `
-                <div class="gallery-item" data-image="images/gallery/${image}">
-                    <img src="images/gallery/${image}" alt="${caption}">
+                <div class="gallery-item">
+                    <img src="images/gallery/${image}" alt="${caption}" data-image="images/gallery/${image}">
                 </div>
             `;
         }
@@ -388,8 +453,8 @@
         const lightboxNext = document.getElementById('lightboxNext');
         let currentImageIndex = 0;
 
-        function openLightbox(image, index) {
-            lightboxImage.src = image;
+        function openLightbox(imageSrc, index) {
+            lightboxImage.src = imageSrc;
             currentImageIndex = index;
             lightbox.classList.add('active');
             updateNavigationVisibility();
@@ -407,19 +472,19 @@
         function navigateGallery(direction) {
             currentImageIndex += direction;
             if (currentImageIndex >= 0 && currentImageIndex < galleryData.length) {
-                const item = galleryData[currentImageIndex];
-                lightboxImage.src = `images/gallery/${item.image}`;
+                const newImage = `images/gallery/${galleryData[currentImageIndex].image}`;
+                lightboxImage.src = newImage;
                 updateNavigationVisibility();
             }
         }
 
         // Event listeners
         document.getElementById('galleryGrid').addEventListener('click', (e) => {
-            const galleryItem = e.target.closest('.gallery-item');
-            if (galleryItem) {
-                const image = galleryItem.dataset.image;
+            const clickedImage = e.target.closest('img');
+            if (clickedImage) {
+                const galleryItem = clickedImage.closest('.gallery-item');
                 const index = Array.from(galleryItem.parentElement.children).indexOf(galleryItem);
-                openLightbox(image, index);
+                openLightbox(clickedImage.dataset.image, index);
             }
         });
 
