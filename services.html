@@ -12,6 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Global font settings */
+        :root {
+            --dark-bg: #1a1a1a;
+            --darker-bg: #121212;
+            --light-text: #e0e0e0;
+            --muted-text: #b0b0b0;
+            --accent-color: #B8C49D;
+            --dark-accent: #3a4a1c;
+            --card-bg: #242424;
+            --hover-bg: #2a2a2a;
+        }
+
         * {
             font-family: 'Rajdhani', sans-serif;
         }
@@ -20,21 +31,119 @@
         body {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 500;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
             letter-spacing: 2px;
+            color: var(--light-text);
         }
 
-        p, span, div, a, li, button, input, textarea {
+        p, span, div, li {
             font-family: 'Rajdhani', sans-serif;
+            color: var(--muted-text);
         }
 
-        .nav-links {
-            font-family: 'Rajdhani', sans-serif;
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--light-text);
+        }
+
+        header {
+            background-color: var(--darker-bg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a {
+            color: var(--muted-text);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .hamburger .bar {
+            background-color: var(--light-text);
+        }
+
+        .services-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/turn.jpeg');
+        }
+
+        .services-hero h1, .services-hero p {
+            color: var(--light-text);
+        }
+
+        .services-content {
+            background-color: var(--dark-bg);
+        }
+
+        .service-item {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            background-color: var(--hover-bg);
+            transform: translateY(-5px);
+        }
+
+        .service-item h3 {
+            color: var(--light-text);
+        }
+
+        .service-item p {
+            color: var(--muted-text);
+        }
+
+        .service-icon {
+            color: var(--accent-color);
+        }
+
+        footer {
+            background-color: var(--darker-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-links h3,
+        .footer-services h3,
+        .footer-contact h3 {
+            color: var(--light-text);
             font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a,
+        .footer-services a,
+        .footer-contact a {
+            color: var(--muted-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover,
+        .footer-contact a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--muted-text);
         }
 
         .section-header h2 {
@@ -63,29 +172,17 @@
             font-weight: 500;
         }
 
-        footer {
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 500;
-        }
-
-        .footer-links h3,
-        .footer-services h3,
-        .footer-contact h3 {
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
         .service-detail-section {
             padding: 8rem 0 4rem;
-            background-color: var(--light-color);
+            background-color: var(--dark-bg);
         }
 
         .service-detail {
-            background: #fff;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             padding: 3rem;
             margin-bottom: 3rem;
-            box-shadow: var(--shadow);
         }
 
         .service-detail:last-child {
@@ -94,7 +191,7 @@
 
         .service-detail .icon {
             font-size: 3rem;
-            color: var(--secondary-color);
+            color: var(--accent-color);
             margin-bottom: 1.5rem;
             text-align: center;
         }
@@ -158,7 +255,7 @@
         }
 
         .footer-services h3 a:hover {
-            color: var(--secondary-color);
+            color: var(--accent-color);
             padding-left: 5px;
         }
 
@@ -169,7 +266,7 @@
         }
 
         .footer-services ul li a:hover {
-            color: var(--secondary-color);
+            color: var(--accent-color);
             padding-left: 5px;
         }
 
@@ -180,7 +277,7 @@
         }
 
         .footer-contact p a:hover {
-            color: var(--secondary-color);
+            color: var(--accent-color);
             padding-left: 5px;
         }
     </style>
