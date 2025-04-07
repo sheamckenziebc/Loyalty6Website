@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers | Loyalty 6 Energy Services</title>
-    <meta name="description" content="Join our team at Loyalty 6 Energy Services. We offer competitive wages, career advancement opportunities, and a professional work environment focused on safety and excellence.">
+    <title>Indigenous Partnerships | Loyalty 6 Energy Services</title>
+    <meta name="description" content="Loyalty 6 Energy Services is committed to fostering meaningful partnerships with Indigenous communities and promoting Indigenous participation in our workforce.">
     <link rel="icon" type="image/jpeg" href="images/thumbnail.jpeg">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
             --darker-bg: #121212;
             --light-text: #e0e0e0;
             --muted-text: #b0b0b0;
-            --accent-color: #B8C49D;
+            --accent-color: #B8C49D; /* Olive Green */
             --dark-accent: #3a4a1c;
             --card-bg: #242424;
             --hover-bg: #2a2a2a;
@@ -26,26 +26,31 @@
 
         * {
             font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Base font settings */
         body {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 500;
             background-color: var(--dark-bg);
             color: var(--light-text);
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--light-text);
+            margin-bottom: 1rem;
         }
 
-        p, span, div, li {
+        p {
             font-family: 'Rajdhani', sans-serif;
             color: var(--muted-text);
+            margin-bottom: 1.5rem;
         }
 
         a {
@@ -57,14 +62,47 @@
         a:hover {
             color: var(--light-text);
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
+        /* Header Styles */
         header {
             background-color: var(--darker-bg);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 50px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
         }
 
         .nav-links a {
             color: var(--muted-text);
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.5rem 0;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
         .nav-links a:hover,
@@ -72,139 +110,145 @@
             color: var(--accent-color);
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
         .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
             background-color: var(--light-text);
         }
-
-        .careers-hero {
-            position: relative;
-            height: 60vh;
-            min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/herobgnew.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .careers-hero .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .careers-hero h1 {
-            color: var(--accent-color);
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-            width: 100%;
-        }
-
-        .careers-hero p {
-            color: var(--light-text);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 800px;
-        }
-
-        .careers-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        
+        /* Partnerships Content Styles */
+        .partnerships-content-section {
+            padding: 4rem 0;
             background-color: var(--dark-bg);
         }
 
-        .careers-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--muted-text);
-        }
-
-        .careers-cta {
-            margin-top: 3rem;
-            text-align: center;
+        .partnerships-card {
             background-color: var(--card-bg);
-            padding: 2rem;
+            padding: 3rem 2rem;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .careers-cta p {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--light-text);
-        }
-
-        .careers-cta a {
+        .partnerships-card h2 {
             color: var(--accent-color);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .careers-cta a:hover {
-            color: var(--light-text);
+        .partnerships-card p {
+            font-size: 1.15rem; /* Slightly larger text */
+            line-height: 1.8;
+            color: var(--light-text); /* Lighter text for better readability */
         }
-
-        .careers-cta i {
-            margin-right: 0.5rem;
-        }
-
+        
+        /* Footer Styles */
         footer {
             background-color: var(--darker-bg);
+            color: var(--muted-text);
+            padding: 3rem 0 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
         }
 
-        .footer-links h3,
-        .footer-services h3,
-        .footer-contact h3 {
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo .footer-main-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+        .footer-logo .footer-ccib-logo {
+            height: 45px;
+        }
+
+        footer h3 {
             color: var(--light-text);
             font-weight: 600;
             letter-spacing: 1px;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
-
-        .footer-links a,
-        .footer-services a,
-        .footer-contact a {
+        
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        footer ul li {
+            margin-bottom: 0.7rem;
+        }
+        
+        footer a {
             color: var(--muted-text);
-            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .footer-links a:hover,
-        .footer-services a:hover,
-        .footer-contact a:hover {
+        footer a:hover {
             color: var(--accent-color);
             padding-left: 5px;
         }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            color: var(--muted-text); /* Ensure contact text uses muted color */
+        }
+        
+        .footer-contact p i {
+             color: var(--accent-color); 
+             width: 15px; /* Align icons */
+        }
 
         .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
         }
-
-        .footer-bottom p {
-            color: var(--muted-text);
-        }
-
+        
+        /* Responsive Styles */
         @media screen and (max-width: 768px) {
             .nav-links {
                 position: fixed;
                 left: -100%;
-                top: 70px;
+                top: 70px; /* Adjusted to header height */
                 gap: 0;
                 flex-direction: column;
                 background-color: var(--darker-bg);
@@ -223,46 +267,54 @@
                 margin: 1rem 0;
             }
 
-            .careers-hero {
-                min-height: 400px;
-                padding: 1rem;
+            .hamburger {
+                display: block;
             }
 
-            .careers-hero h1 {
-                font-size: 2.2rem;
-                padding: 0 1rem;
-                width: 100%;
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
             }
 
-            .careers-content {
-                padding: 3rem 1.5rem;
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
             }
-        }
 
-        @media screen and (max-width: 480px) {
-            .careers-hero h1 {
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .partnerships-content-section {
+                 padding: 3rem 0;
+            }
+            
+            .partnerships-card {
+                margin: 0 1rem; /* Add horizontal margin */
+                padding: 2rem 1.5rem;
+            }
+
+            .partnerships-card h2 {
                 font-size: 1.8rem;
-                line-height: 1.3;
-                padding: 0;
+                margin-bottom: 2rem;
+            }
+
+            .partnerships-card p {
+                font-size: 1.05rem;
             }
             
-            .careers-hero {
-                height: auto;
-                min-height: 350px;
-                padding: 2rem 0.5rem;
-            }
+             .footer-content {
+                 grid-template-columns: 1fr; /* Stack columns on smaller screens */
+                 text-align: center;
+             }
+             
+             .footer-logo {
+                 margin-bottom: 1.5rem;
+             }
+             
+             .footer-contact p {
+                 justify-content: center;
+             }
         }
 
-        @media screen and (max-width: 400px) {
-            .careers-hero h1 {
-                font-size: 1.6rem;
-                letter-spacing: 1px;
-            }
-            
-            .careers-hero {
-                min-height: 300px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -279,7 +331,8 @@
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="careers.html" class="active">Careers</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="partnerships.html" class="active">Partnerships</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div class="hamburger">
@@ -291,22 +344,14 @@
         </div>
     </header>
 
-    <section class="careers-hero">
+    <section class="partnerships-content-section">
         <div class="container">
-            <h1>Build Your Career with Loyalty 6 Energy Services</h1>
-        </div>
-    </section>
-
-    <section class="careers-content">
-        <div class="container">
-            <p>Loyalty 6 Energy Services is always looking for experienced foremen and hardworking helpers to join our team. We offer a professional, safety-focused work environment where your skills and dedication are valued. As a locally owned and operated company, we take pride in a workplace built on integrity, quality, and teamwork.</p>
-            
-            <p>We believe in rewarding expertise and commitment. Pay is adjusted based on experience and additional schooling, recognizing the value of continued learning and professional growth. Whether you're a seasoned leader or looking to build your career in the oil and gas industry, we offer competitive wages, career advancement opportunities, and a supportive team that prioritizes excellence.</p>
-
-            <div class="careers-cta">
-                <p>If you're ready for a rewarding and stable career, we want to hear from you.</p>
-                <p>Send your resume and cover letter to: <a href="mailto:loyalty6energy@gmail.com"><i class="fas fa-envelope"></i>loyalty6energy@gmail.com</a></p>
-            </div>
+             <div class="partnerships-card">
+                <h2>Indigenous Partnerships and Community Commitment</h2>
+                <p>As a majority First Nations-owned company, Loyalty 6 Energy Services is deeply rooted in the values of collaboration, respect, and community. We are committed to fostering meaningful partnerships with Indigenous communities and actively contributing to long-term, mutually beneficial relationships.</p>
+                <p>Our team includes valued First Nations employees, and we continue to promote Indigenous participation in our workforce through inclusive hiring practices and skill development opportunities. Through our structured On-the-Job (OTJ) training program, new workers receive hands-on experience under the mentorship of seasoned professionals—ensuring safety, confidence, and growth in the field.</p>
+                <p>Beyond employment, Loyalty 6 invests in Indigenous communities by supporting local events, contributing to infrastructure projects, and encouraging broader economic engagement. Our goal is to not only deliver quality energy services, but to also play a positive role in the communities we serve.</p>
+             </div>
         </div>
     </section>
 
@@ -329,6 +374,7 @@
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="careers.html">Careers</a></li>
+                        <li><a href="partnerships.html">Partnerships</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
