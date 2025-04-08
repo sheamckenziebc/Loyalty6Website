@@ -114,47 +114,68 @@
             background-color: var(--dark-bg);
         }
 
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .service-card {
             background-color: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 8px;
             text-align: center;
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             text-decoration: none;
-            display: block;
         }
 
         .service-card:hover {
-            background-color: var(--hover-bg);
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(184, 196, 157, 0.1);
         }
 
-        .service-card .icon {
+        .service-card .icon i {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
             color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: inline-block;
         }
 
         .service-card h3 {
             color: var(--light-text);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .service-card p {
             color: var(--muted-text);
+            font-size: 0.95rem;
             line-height: 1.6;
-            margin: 0;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card .btn-learn-more {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-top: auto;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .service-card .btn-learn-more:hover {
+            background-color: var(--accent-color);
+            color: var(--darker-bg);
         }
 
         .contact-form input,
@@ -321,75 +342,36 @@
     <section id="services" class="services">
         <div class="container">
             <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive oil and gas services delivered with precision and dedication</p>
+                <h2>Our Core Services</h2>
+                <p>Specialized solutions for the energy sector</p>
             </div>
             
-            <div class="services-subsection">
-                <h3 class="subsection-title">WHAT WE OFFER</h3>
-                <div class="services-grid">
-                    <a href="services.html#crew-truck" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-truck-pickup"></i>
-                        </div>
-                        <h3>CREW TRUCK WORK</h3>
-                        <p>Reliable crew transportation and mobile work services for remote locations.</p>
-                    </a>
-                    <a href="services.html#general-labor" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-hard-hat"></i>
-                        </div>
-                        <h3>GENERAL LABOURERS</h3>
-                        <p>Skilled general labor services for a wide range of construction and maintenance tasks.</p>
-                    </a>
-                    <a href="services.html#hot-shot" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <h3>HOT SHOT SERVICES</h3>
-                        <p>Reliable hot shot services for time-sensitive transportation needs.</p>
-                    </a>
-                    <a href="services.html#mechanical" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-wrench"></i>
-                        </div>
-                        <h3>MECHANICAL WORK</h3>
-                        <p>Expert mechanical services for maintenance and repair of equipment and machinery.</p>
-                    </a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-truck-pickup"></i>
+                    </div>
+                    <h3>Comprehensive Crew Truck Services</h3>
+                    <p>High-quality pipefitting, mechanical work, construction, maintenance, and turnaround support with 24/7 mobilization.</p>
+                    <a href="services.html#crew-truck-services" class="btn-learn-more">Learn More</a>
                 </div>
-            </div>
-            
-            <div class="services-subsection">
-                <h3 class="subsection-title">WHAT WE SPECIALIZE IN</h3>
-                <div class="services-grid">
-                    <a href="services.html#construction" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-hammer"></i>
-                        </div>
-                        <h3>CONSTRUCTION</h3>
-                        <p>Comprehensive construction services for oil and gas facilities and infrastructure.</p>
-                    </a>
-                    <a href="services.html#decommissioning" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
-                        <h3>DE-<br>COMMISSIONING</h3>
-                        <p>Safe and efficient decommissioning of oil and gas facilities and equipment.</p>
-                    </a>
-                    <a href="services.html#maintenance" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3>MAINTENANCE</h3>
-                        <p>Regular maintenance services to ensure optimal performance and longevity of equipment.</p>
-                    </a>
-                    <a href="services.html#turnarounds" class="service-card">
-                        <div class="icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3>TURNAROUNDS</h3>
-                        <p>Complete turnaround work and planning to minimize downtime and maximize productivity.</p>
-                    </a>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>General Labour</h3>
+                    <p>Adaptable and skilled labour support for site preparation, cleanup, material handling, and assisting specialized trades.</p>
+                    <a href="services.html#general-labour" class="btn-learn-more">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Hot Shot Services</h3>
+                    <p>Reliable hotshot, delivery, and pilot truck services for urgent equipment, critical parts, or scheduled deliveries.</p>
+                    <a href="services.html#hot-shot" class="btn-learn-more">Learn More</a>
                 </div>
             </div>
         </div>
