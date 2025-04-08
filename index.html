@@ -19,6 +19,7 @@
             --light-text: #e0e0e0;
             --muted-text: #b0b0b0;
             --accent-color: #B8C49D;
+            --secondary-color: #f39c12; /* Orange color for hover underline */
             --dark-accent: #3a4a1c;
             --card-bg: #242424;
             --hover-bg: #2a2a2a;
@@ -65,11 +66,30 @@
 
         .nav-links a {
             color: var(--muted-text);
+            position: relative;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--accent-color);
+        }
+
+        /* Create orange underline that appears on hover */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        /* Show underline on hover and active states */
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .hamburger .bar {
