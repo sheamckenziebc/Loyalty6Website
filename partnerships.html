@@ -345,6 +345,84 @@
              }
         }
 
+        /* Dropdown Menu Styles */
+        .nav-links li {
+            position: relative; /* Needed for absolute positioning of dropdown */
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%; /* Position below the parent li */
+            background-color: var(--darker-bg);
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+            min-width: 200px; /* Adjust width as needed */
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none; /* Remove top border as it connects to header */
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links li:hover > .dropdown-menu {
+            display: block; /* Show dropdown on hover */
+        }
+
+        .dropdown-menu li {
+            margin: 0; /* Override default li margin */
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.7rem 1rem;
+            color: var(--muted-text);
+            font-weight: 500; /* Slightly lighter weight */
+            font-size: 0.85rem; /* Slightly smaller font */
+            text-transform: none; /* Keep case as is */
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .dropdown-menu li a:hover {
+            background-color: var(--hover-bg);
+            color: var(--accent-color);
+        }
+        /* Remove the underline effect from dropdown items */
+        .dropdown-menu li a::after {
+             display: none; 
+        }
+
+        /* Adjust mobile view for dropdown */
+        @media screen and (max-width: 768px) {
+            .dropdown-menu {
+                position: static; /* Static positioning in mobile */
+                display: block; /* Always block */
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                min-width: auto;
+                border-radius: 0;
+            }
+            .nav-links li:hover > .dropdown-menu {
+                 display: block; /* Keep visible */
+            }
+            .dropdown-menu li a {
+                 padding: 0.5rem 1rem 0.5rem 2rem; /* Indent mobile dropdown items */
+                 font-size: 0.9rem;
+                 text-align: left;
+            }
+             .dropdown-menu li a:hover {
+                  background-color: var(--hover-bg); /* Keep hover */
+             }
+             /* Ensure parent "Services" link is clickable in mobile */
+             .nav-links > li > a { 
+                  display: block; /* Make sure parent link takes space */
+             }
+        }
+
     </style>
 </head>
 <body>
@@ -358,7 +436,14 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown"> 
+                        <a href="services.html">Services</a> 
+                        <ul class="dropdown-menu">
+                            <li><a href="services.html#crew-truck-services">Crew Truck Services</a></li>
+                            <li><a href="services.html#general-labour">General Labour</a></li>
+                            <li><a href="services.html#hot-shot">Hot Shot Services</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="partnerships.html" class="active">Our Partnerships</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
