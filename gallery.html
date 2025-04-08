@@ -364,12 +364,8 @@
                 caption: "Loyalty 6 Crew Truck Services"
             },
             {
-                image: "signal-2025-03-14-134008.jpeg",
-                caption: "Field Operations"
-            },
-            {
                 image: "signal-2025-03-14-134008_002.jpeg",
-                caption: "Equipment Maintenance"
+                caption: "Oilfield Equipment"
             },
             {
                 image: "signal-2025-03-14-134008_004.jpeg",
@@ -434,17 +430,13 @@
             {
                 image: "signal-2025-03-14-134153_010.jpeg",
                 caption: "Field Operations"
-            },
-            {
-                image: "signal-2025-03-14-134153_011.jpeg",
-                caption: "Site Maintenance"
             }
         ];
 
         function createGalleryItem(image, caption) {
             return `
                 <div class="gallery-item">
-                    <img src="images/gallery/${image}" alt="${caption}" data-image="images/gallery/${image}">
+                    <img src="images/gallery/${image}" alt="Loyalty 6 Gallery Image" data-image="images/gallery/${image}">
                 </div>
             `;
         }
@@ -459,6 +451,7 @@
 
         function openLightbox(imageSrc, index) {
             lightboxImage.src = imageSrc;
+            lightboxImage.alt = "Loyalty 6 Gallery Image";
             currentImageIndex = index;
             lightbox.classList.add('active');
             updateNavigationVisibility();
