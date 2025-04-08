@@ -108,13 +108,32 @@
             background-position: center;
         }
 
-        .services-hero h1, .services-hero p {
+        .services-hero h1 {
+            color: var(--accent-color);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .services-hero h1::after {
+             content: '';
+             display: block;
+             width: 60px;
+             height: 3px;
+             background-color: var(--accent-color);
+             margin: 0.5rem auto 1rem;
+        }
+        
+        .services-hero p {
             color: var(--light-text);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             position: relative;
             z-index: 2;
         }
-        
          .services-hero .container {
             position: relative;
             z-index: 2;
@@ -230,10 +249,9 @@
             grid-template-columns: 1fr 1fr;
             overflow: hidden;
         }
-        
-        .service-category:nth-child(odd) .service-image-container {
+         .service-category:nth-child(odd) .service-image-container {
              order: 2;
-        }
+         }
          .service-category:nth-child(odd) .service-text-content {
              order: 1;
          }
@@ -277,8 +295,7 @@
             margin-bottom: 1rem;
             color: var(--muted-text);
         }
-        
-        .service-category p strong {
+         .service-category p strong {
             color: var(--light-text);
             font-weight: 600;
         }
@@ -307,17 +324,9 @@
              .service-category:nth-child(even) .service-text-content {
                  order: 2;
              }
-             .service-image-slider {
-                 position: relative;
-                 height: auto;
-                 aspect-ratio: 16 / 9;
-                 border-radius: 0;
-             }
-              .service-image-container {
-                  min-height: 0;
-              }
-              .slider-wrapper img {
-                   height: auto;
+              .service-image-container img {
+                  height: auto;
+                  aspect-ratio: 16 / 9;
               }
         }
 
@@ -365,55 +374,25 @@
             padding-left: 5px;
         }
 
-        /* Image Slider Styles */
-        .service-image-slider {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            border-radius: 0;
-            border: none;
+        /* Static Image Display Styles */
+        .service-image-container img {
+             display: block;
+             width: 100%;
+             height: 100%; /* Fill container in side-by-side */
+             object-fit: cover; /* Cover the area */
         }
 
-        .slider-wrapper img {
-            width: 100%;
-            height: 100%;
-            flex-shrink: 0;
-            display: block;
-            object-fit: cover;
+        @media screen and (max-width: 992px) {
+             /* ... existing stacking styles ... */
+             
+             /* Adjust static image for stacked view */
+              .service-image-container img {
+                  height: auto; /* Reset height */
+                  aspect-ratio: 16 / 9; /* Use aspect ratio when stacked */
+              }
+              /* Remove slider-specific resets */
+              /* .service-image-slider style adjustments removed */
         }
-
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            color: var(--light-text);
-            border: none;
-            padding: 0.8rem 1rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-            z-index: 10;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-            line-height: 1;
-        }
-        
-         .slider-nav.prev {
-             left: 1rem;
-         }
-        
-         .slider-nav.next {
-             right: 1rem;
-         }
-        
-         .slider-nav:hover {
-             background-color: var(--accent-color);
-             color: var(--darker-bg);
-         }
     </style>
 </head>
 <body>
@@ -483,17 +462,8 @@
                      </div>
                 </div>
                 <div class="service-image-container">
-                    <!-- Crew Truck Image Slider -->
-                    <div class="service-image-slider" data-slider-id="crew-truck">
-                        <div class="slider-wrapper">
-                            <img src="images/turn.jpeg" alt="Turnaround Service Image">
-                            <img src="images/construction.jpeg" alt="Construction Service Image">
-                            <img src="images/mech.jpeg" alt="Mechanical Service Image">
-                            <img src="images/maint.jpeg" alt="Maintenance Service Image">
-                        </div>
-                        <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
-                        <button class="slider-nav next" aria-label="Next image">&#10095;</button>
-                    </div>
+                    <!-- Static Crew Truck Image -->
+                    <img src="images/turn.jpeg" alt="Crew Truck Service Image">
                 </div>
             </div>
 
@@ -506,15 +476,8 @@
                     <p>Whether you require short-term assistance or ongoing site support, Loyalty 6 delivers versatile labour solutions tailored to your operational requirements.</p>
                 </div>
                 <div class="service-image-container">
-                    <!-- General Labour Image Slider -->
-                    <div class="service-image-slider" data-slider-id="general-labour">
-                        <div class="slider-wrapper">
-                            <img src="images/general-labour.jpg" alt="General Labour Service Image">
-                            <!-- Add more relevant images if available -->
-                        </div>
-                         <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
-                         <button class="slider-nav next" aria-label="Next image">&#10095;</button>
-                    </div>
+                    <!-- Static General Labour Image -->
+                    <img src="images/general-labour.jpg" alt="General Labour Service Image">
                 </div>
             </div>
 
@@ -527,15 +490,8 @@
                     <p>Our experienced drivers and dispatch team understand the importance of timely logistics in high-stakes environments. We are committed to safety, efficiency, and clear communication from dispatch to delivery.</p>
                 </div>
                 <div class="service-image-container">
-                    <!-- Hot Shot Image Slider -->
-                    <div class="service-image-slider" data-slider-id="hot-shot">
-                        <div class="slider-wrapper">
-                            <img src="images/hotshot.jpeg" alt="Hot Shot Service Image">
-                             <!-- Add more relevant images if available -->
-                        </div>
-                        <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
-                        <button class="slider-nav next" aria-label="Next image">&#10095;</button>
-                    </div>
+                    <!-- Static Hot Shot Image -->
+                    <img src="images/hotshot.jpeg" alt="Hot Shot Service Image">
                 </div>
             </div>
 
@@ -587,76 +543,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // Simple Image Slider Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const sliders = document.querySelectorAll('.service-image-slider');
-
-            sliders.forEach(slider => {
-                const wrapper = slider.querySelector('.slider-wrapper');
-                const images = wrapper.querySelectorAll('img');
-                const prevButton = slider.querySelector('.slider-nav.prev');
-                const nextButton = slider.querySelector('.slider-nav.next');
-                let currentIndex = 0;
-                const imageCount = images.length;
-                let autoScrollInterval;
-
-                // Hide buttons if only one image
-                if (imageCount <= 1) {
-                    if(prevButton) prevButton.style.display = 'none';
-                    if(nextButton) nextButton.style.display = 'none';
-                    return; // No need for slider logic if 1 or 0 images
-                }
-
-                function updateSliderPosition() {
-                    const offset = -currentIndex * 100;
-                    wrapper.style.transform = `translateX(${offset}%)`;
-                }
-
-                function showNextImage() {
-                    currentIndex = (currentIndex + 1) % imageCount;
-                    updateSliderPosition();
-                }
-
-                function showPrevImage() {
-                    currentIndex = (currentIndex - 1 + imageCount) % imageCount;
-                    updateSliderPosition();
-                }
-
-                function startAutoScroll() {
-                    // Clear existing interval before starting a new one
-                    clearInterval(autoScrollInterval);
-                    autoScrollInterval = setInterval(showNextImage, 5000); // Change image every 5 seconds
-                }
-
-                function stopAutoScroll() {
-                    clearInterval(autoScrollInterval);
-                }
-
-                // Event Listeners
-                nextButton.addEventListener('click', () => {
-                    showNextImage();
-                    stopAutoScroll(); // Stop autoscroll on manual interaction
-                    // Optionally restart autoscroll after a delay
-                    // setTimeout(startAutoScroll, 10000); 
-                });
-
-                prevButton.addEventListener('click', () => {
-                    showPrevImage();
-                    stopAutoScroll(); // Stop autoscroll on manual interaction
-                     // Optionally restart autoscroll after a delay
-                    // setTimeout(startAutoScroll, 10000); 
-                });
-                
-                // Optional: Pause on hover
-                slider.addEventListener('mouseenter', stopAutoScroll);
-                slider.addEventListener('mouseleave', startAutoScroll);
-
-                // Initialize
-                updateSliderPosition(); // Set initial position
-                startAutoScroll(); // Start autoscroll
-            });
-        });
-    </script>
 </body>
 </html> 
