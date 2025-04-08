@@ -267,8 +267,31 @@
         }
         
         .service-image-container {
-             position: relative;
-             min-height: 300px;
+            display: flex; /* Use flexbox for stacking */
+            flex-direction: column; /* Stack vertically */
+            gap: 0.5rem; /* Optional gap between stacked images */
+            overflow: hidden; /* Hide overflow if images are too tall */
+            position: relative; /* Keep for potential future absolute elements */
+            min-height: 300px; /* Keep min-height */
+        }
+
+        .service-image-container img {
+             display: block;
+             width: 100%;
+             height: auto; /* Allow height to adjust based on width */
+             object-fit: cover; /* Cover the area */
+        }
+        
+        /* Crew truck specific adjustments for multiple images */
+        #crew-truck-services .service-image-container img {
+             height: calc(25% - 0.375rem); /* Divide height among 4 images, accounting for gap */
+             object-fit: cover; /* Ensure images cover their portion */
+        }
+
+        /* Ensure single images fill the container height */
+        #general-labour .service-image-container img,
+        #hot-shot .service-image-container img {
+            height: 100%; 
         }
 
         .service-category h2 {
@@ -374,25 +397,34 @@
             padding-left: 5px;
         }
 
-        /* Static Image Display Styles */
-        .service-image-container img {
-             display: block;
-             width: 100%;
-             height: 100%; /* Fill container in side-by-side */
-             object-fit: cover; /* Cover the area */
+        /* Reset container styles for stacked view */
+        .service-image-container {
+            flex-direction: row; /* Side-by-side for single images */
+            min-height: 0;
+            gap: 0;
         }
-
-        @media screen and (max-width: 992px) {
-             /* ... existing stacking styles ... */
-             
-             /* Adjust static image for stacked view */
-              .service-image-container img {
-                  height: auto; /* Reset height */
-                  aspect-ratio: 16 / 9; /* Use aspect ratio when stacked */
-              }
-              /* Remove slider-specific resets */
-              /* .service-image-slider style adjustments removed */
-        }
+        
+        /* Adjust static image for stacked view */
+         .service-image-container img {
+             height: auto; /* Reset height */
+             aspect-ratio: 16 / 9; /* Use aspect ratio when stacked */
+             width: 100%; /* Full width */
+         }
+         
+         /* Crew truck images in stacked view */
+         #crew-truck-services .service-image-container img {
+             height: auto; /* Let height adjust */
+             aspect-ratio: 16 / 9; /* Apply aspect ratio */
+             width: 100%; /* Full width */
+         }
+         
+         /* Ensure single images take full width when stacked */
+          #general-labour .service-image-container img,
+          #hot-shot .service-image-container img {
+               width: 100%;
+               height: auto;
+               aspect-ratio: 16 / 9;
+          }
     </style>
 </head>
 <body>
@@ -462,8 +494,11 @@
                      </div>
                 </div>
                 <div class="service-image-container">
-                    <!-- Static Crew Truck Image -->
-                    <img src="images/turn.jpeg" alt="Crew Truck Service Image">
+                    <!-- Stacked Crew Truck Images -->
+                    <img src="images/turn.jpeg" alt="Turnaround Service Image">
+                    <img src="images/construction.jpeg" alt="Construction Service Image">
+                    <img src="images/mech.jpeg" alt="Mechanical Service Image">
+                    <img src="images/maint.jpeg" alt="Maintenance Service Image">
                 </div>
             </div>
 
@@ -491,7 +526,7 @@
                 </div>
                 <div class="service-image-container">
                     <!-- Static Hot Shot Image -->
-                    <img src="images/hotshot.jpeg" alt="Hot Shot Service Image">
+                    <img src="images/hotshotcropped.JPG" alt="Hot Shot Service Image">
                 </div>
             </div>
 
