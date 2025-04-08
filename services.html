@@ -319,6 +319,58 @@
             color: var(--accent-color);
             padding-left: 5px;
         }
+
+        /* Image Slider Styles */
+        .service-image-slider {
+            position: relative;
+            max-width: 100%; /* Slider takes full width of its container */
+            margin: 2rem auto 0; /* Space above slider */
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-wrapper img {
+            width: 100%;
+            flex-shrink: 0; /* Prevent images from shrinking */
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: var(--light-text);
+            border: none;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+            line-height: 1;
+        }
+        
+         .slider-nav.prev {
+             left: 1rem;
+         }
+        
+         .slider-nav.next {
+             right: 1rem;
+         }
+        
+         .slider-nav:hover {
+             background-color: var(--accent-color);
+             color: var(--darker-bg);
+         }
     </style>
 </head>
 <body>
@@ -385,6 +437,18 @@
                     <h3>Mechanical Work & Pipefitting</h3>
                     <p>As specialists in pipefitting and mechanical services, our skilled crews handle the repair and maintenance of oil and gas wellsites and facilities. We ensure all mechanical work meets rigorous safety and quality standards.</p>
                  </div>
+
+                 <!-- Crew Truck Image Slider -->
+                 <div class="service-image-slider" data-slider-id="crew-truck">
+                    <div class="slider-wrapper">
+                        <img src="images/turn.jpeg" alt="Turnaround Service Image">
+                        <img src="images/construction.jpeg" alt="Construction Service Image">
+                        <img src="images/mech.jpeg" alt="Mechanical Service Image">
+                        <img src="images/maint.jpeg" alt="Maintenance Service Image">
+                    </div>
+                    <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
+                    <button class="slider-nav next" aria-label="Next image">&#10095;</button>
+                </div>
             </div>
 
             <!-- Service Category 2: General Labour -->
@@ -393,6 +457,16 @@
                 <p>Loyalty 6 Energy Services provides adaptable and skilled general labour support across British Columbia and Alberta. Our crews are equipped to assist with essential site tasks such as preparation, cleanup, material handling, and providing reliable backup for specialized trades, ensuring your project runs smoothly.</p>
                 <p>We supply safety-trained and dependable labourers ready to integrate seamlessly into your project workflow. Understanding the dynamic needs of oil and gas and industrial projects, our teams are committed to efficiency, safety, and contributing effectively to maintain a productive worksite.</p>
                 <p>Whether you require short-term assistance or ongoing site support, Loyalty 6 delivers versatile labour solutions tailored to your operational requirements.</p>
+
+                <!-- General Labour Image Slider -->
+                <div class="service-image-slider" data-slider-id="general-labour">
+                    <div class="slider-wrapper">
+                        <img src="images/general-labour.jpg" alt="General Labour Service Image">
+                        <!-- Add more relevant images if available -->
+                    </div>
+                     <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
+                     <button class="slider-nav next" aria-label="Next image">&#10095;</button>
+                </div>
             </div>
 
             <!-- Service Category 3: Hot Shot Services -->
@@ -401,6 +475,16 @@
                 <p>Loyalty 6 Energy Services proudly offers reliable hotshot, delivery, and pilot truck services throughout British Columbia and Alberta. Whether it's urgent equipment, critical parts, or scheduled deliveries, our team ensures that your materials arrive safely and on time—every time.</p>
                 <p>We maintain a diverse fleet of well-maintained trailers and transport units to accommodate a wide variety of load requirements. From light-duty hauls to oversized and specialized freight, we are equipped to handle the unique demands of the oil and gas sector and other industrial operations.</p>
                 <p>Our experienced drivers and dispatch team understand the importance of timely logistics in high-stakes environments. We are committed to safety, efficiency, and clear communication from dispatch to delivery.</p>
+
+                <!-- Hot Shot Image Slider -->
+                <div class="service-image-slider" data-slider-id="hot-shot">
+                    <div class="slider-wrapper">
+                        <img src="images/hotshot.jpeg" alt="Hot Shot Service Image">
+                         <!-- Add more relevant images if available -->
+                    </div>
+                    <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
+                    <button class="slider-nav next" aria-label="Next image">&#10095;</button>
+                </div>
             </div>
 
         </div>
@@ -451,5 +535,76 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Simple Image Slider Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const sliders = document.querySelectorAll('.service-image-slider');
+
+            sliders.forEach(slider => {
+                const wrapper = slider.querySelector('.slider-wrapper');
+                const images = wrapper.querySelectorAll('img');
+                const prevButton = slider.querySelector('.slider-nav.prev');
+                const nextButton = slider.querySelector('.slider-nav.next');
+                let currentIndex = 0;
+                const imageCount = images.length;
+                let autoScrollInterval;
+
+                // Hide buttons if only one image
+                if (imageCount <= 1) {
+                    if(prevButton) prevButton.style.display = 'none';
+                    if(nextButton) nextButton.style.display = 'none';
+                    return; // No need for slider logic if 1 or 0 images
+                }
+
+                function updateSliderPosition() {
+                    const offset = -currentIndex * 100;
+                    wrapper.style.transform = `translateX(${offset}%)`;
+                }
+
+                function showNextImage() {
+                    currentIndex = (currentIndex + 1) % imageCount;
+                    updateSliderPosition();
+                }
+
+                function showPrevImage() {
+                    currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+                    updateSliderPosition();
+                }
+
+                function startAutoScroll() {
+                    // Clear existing interval before starting a new one
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = setInterval(showNextImage, 5000); // Change image every 5 seconds
+                }
+
+                function stopAutoScroll() {
+                    clearInterval(autoScrollInterval);
+                }
+
+                // Event Listeners
+                nextButton.addEventListener('click', () => {
+                    showNextImage();
+                    stopAutoScroll(); // Stop autoscroll on manual interaction
+                    // Optionally restart autoscroll after a delay
+                    // setTimeout(startAutoScroll, 10000); 
+                });
+
+                prevButton.addEventListener('click', () => {
+                    showPrevImage();
+                    stopAutoScroll(); // Stop autoscroll on manual interaction
+                     // Optionally restart autoscroll after a delay
+                    // setTimeout(startAutoScroll, 10000); 
+                });
+                
+                // Optional: Pause on hover
+                slider.addEventListener('mouseenter', stopAutoScroll);
+                slider.addEventListener('mouseleave', startAutoScroll);
+
+                // Initialize
+                updateSliderPosition(); // Set initial position
+                startAutoScroll(); // Start autoscroll
+            });
+        });
+    </script>
 </body>
 </html> 
