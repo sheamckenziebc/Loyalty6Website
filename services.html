@@ -118,8 +118,7 @@
             position: relative;
             z-index: 2;
         }
-        
-        .services-hero h1::after {
+         .services-hero h1::after {
              content: '';
              display: block;
              width: 60px;
@@ -127,8 +126,7 @@
              background-color: var(--accent-color);
              margin: 0.5rem auto 1rem;
         }
-        
-        .services-hero p {
+         .services-hero p {
             color: var(--light-text);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             position: relative;
@@ -283,18 +281,8 @@
              border: none; /* Ensure no border */
         }
         
-        /* Crew truck specific: force 4 stacked images */
-        #crew-truck-services .service-image-container {
-             /* Flex direction column is already set */
-             justify-content: space-between; /* Distribute space (optional) */
-        }
-        #crew-truck-services .service-image-container img {
-             height: 25%; /* Each image takes 1/4 height */
-             object-fit: cover; /* Cover the allocated space */
-             flex-shrink: 0; /* Prevent shrinking */
-        }
-
-        /* Single images still fill the container height */
+        /* Single images fill the container height */
+        #crew-truck-services .service-image-container img,
         #general-labour .service-image-container img,
         #hot-shot .service-image-container img {
             height: 100%; 
@@ -364,20 +352,12 @@
                   min-height: 0;
                   /* Removed gap */
               }
-              /* Remove crew truck specific height when stacked */
-               #crew-truck-services .service-image-container img {
-                   height: auto; /* Let height adjust */
-                   aspect-ratio: 16 / 9; /* Apply aspect ratio */
+              /* Adjust single static image for stacked view (applies to all now) */
+               .service-image-container img {
+                   height: auto; /* Reset height */
+                   aspect-ratio: 16 / 9; /* Use aspect ratio when stacked */
                    width: 100%; /* Full width */
                }
-               
-               /* Adjust single static image for stacked view */
-                #general-labour .service-image-container img,
-                #hot-shot .service-image-container img {
-                    height: auto; /* Reset height */
-                    aspect-ratio: 16 / 9; /* Use aspect ratio when stacked */
-                    width: 100%; /* Full width */
-                }
         }
 
         @media screen and (max-width: 768px) {
@@ -423,35 +403,6 @@
             color: var(--accent-color);
             padding-left: 5px;
         }
-
-        /* Reset container styles for stacked view */
-        .service-image-container {
-            flex-direction: row; /* Side-by-side for single images */
-            min-height: 0;
-            gap: 0;
-        }
-        
-        /* Adjust static image for stacked view */
-         .service-image-container img {
-             height: auto; /* Reset height */
-             aspect-ratio: 16 / 9; /* Use aspect ratio when stacked */
-             width: 100%; /* Full width */
-         }
-         
-         /* Crew truck images in stacked view */
-         #crew-truck-services .service-image-container img {
-             height: auto; /* Let height adjust */
-             aspect-ratio: 16 / 9; /* Apply aspect ratio */
-             width: 100%; /* Full width */
-         }
-         
-         /* Ensure single images take full width when stacked */
-          #general-labour .service-image-container img,
-          #hot-shot .service-image-container img {
-               width: 100%;
-               height: auto;
-               aspect-ratio: 16 / 9;
-          }
 
         /* Dropdown Menu Styles */
         .nav-links li {
@@ -607,10 +558,7 @@
                      </div>
                 </div>
                 <div class="service-image-container">
-                    <!-- Stacked Crew Truck Images -->
-                    <img src="images/turn.jpeg" alt="Turnaround Service Image">
-                    <img src="images/construction.jpeg" alt="Construction Service Image">
-                    <img src="images/mech.jpeg" alt="Mechanical Service Image">
+                    <!-- Single Crew Truck Image -->
                     <img src="images/maint.jpeg" alt="Maintenance Service Image">
                 </div>
             </div>
