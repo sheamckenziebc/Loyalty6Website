@@ -12,104 +12,64 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global font settings */
+        /* Dark theme variables and overrides */
         :root {
+            --primary-color: #B8C49D;
+            --secondary-color: #B8C49D;
+            --accent-color: #B8C49D;
+            --dark-color: #3A4A1C;
+            --light-color: #e0e0e0;
+            --text-color: #e0e0e0;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            
+            /* Dark theme specific */
             --dark-bg: #1a1a1a;
             --darker-bg: #121212;
-            --light-text: #e0e0e0;
-            --muted-text: #b0b0b0;
-            --accent-color: #B8C49D; /* Olive Green */
-            --dark-accent: #3a4a1c;
             --card-bg: #242424;
             --hover-bg: #2a2a2a;
         }
 
-        * {
-            font-family: 'Rajdhani', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Base dark theme overrides */
         body {
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 500;
             background-color: var(--dark-bg);
-            color: var(--light-text);
-            line-height: 1.6;
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--text-color);
         }
 
         h1, h2, h3, h4, h5, h6 {
+            color: var(--text-light);
             font-family: 'Rajdhani', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--light-text);
-            margin-bottom: 1rem;
         }
 
-        p {
+        p, li {
+            color: var(--text-muted);
             font-family: 'Rajdhani', sans-serif;
-            color: var(--muted-text);
-            margin-bottom: 1.5rem;
         }
 
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: var(--light-text);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        /* Canonical Header & Nav Styles Start */
+        /* Simple header overrides - minimal changes */
         header {
             background-color: var(--darker-bg);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: none;
             position: relative;
-            z-index: 100;
         }
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo-image {
-            height: 50px;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
+        /* Fix navigation link states */
         .nav-links a {
-            color: var(--muted-text);
-            font-weight: 600;
-            letter-spacing: 1px;
+            color: var(--text-muted);
+            text-transform: none !important;
             position: relative;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            padding: 0.5rem 0;
+            padding-bottom: 5px;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--accent-color);
+            color: var(--secondary-color) !important;
         }
 
+        /* Reset any previous underline styling */
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -117,153 +77,60 @@
             height: 2px;
             bottom: 0;
             left: 0;
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color) !important;
             transition: width 0.3s ease;
         }
 
+        /* Show underline on active/hover */
         .nav-links a:hover::after,
         .nav-links a.active::after {
-            width: 100%;
-            background-color: var(--accent-color); /* Ensure correct color */
-            height: 2px; /* Ensure correct height */
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
+            width: 100% !important;
+            opacity: 1 !important;
+            visibility: visible !important;
         }
 
         .hamburger .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            transition: all 0.3s ease-in-out;
-            background-color: var(--light-text);
-        }
-        /* Canonical Dropdown Menu Styles Start */
-        .nav-links li {
-            position: relative; 
+            background-color: var(--text-light);
         }
 
+        /* Dropdown menu styling fixes */
         .dropdown-menu {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 100%; 
             background-color: var(--darker-bg);
-            list-style: none;
-            padding: 0.5rem 0;
-            margin: 0;
-            min-width: 200px; 
-            z-index: 1000;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: none; 
-            border-radius: 0 0 4px 4px;
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: none !important; /* Force hiding by default */
+            overflow: hidden;
         }
-
-        .nav-links li:hover > .dropdown-menu {
-            display: block; 
-        }
-
-        .dropdown-menu li {
-            margin: 0; 
+        
+        /* Only show dropdown on hover */
+        .nav-links li.dropdown:hover .dropdown-menu {
+            display: block !important;
         }
 
         .dropdown-menu li a {
-            display: block;
-            padding: 0.7rem 1rem;
-            color: var(--muted-text);
-            font-weight: 500; 
-            font-size: 0.85rem; 
-            text-transform: none; 
+            color: var(--text-muted);
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
-            white-space: nowrap;
+            padding: 0.7rem 1rem;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
         .dropdown-menu li a:hover {
             background-color: var(--hover-bg);
-            color: var(--accent-color);
+            color: var(--secondary-color);
         }
-        
-        .dropdown-menu li a::after {
-             display: none; 
-        }
-         /* Canonical Dropdown Menu Styles End */
 
-        /* Canonical Responsive Header Styles Start */
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px; /* Matches index.html */
-                gap: 0;
-                flex-direction: column;
-                background-color: var(--darker-bg);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 1rem 0; 
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-             /* Canonical Mobile Dropdown Styles */
-             .dropdown-menu {
-                 position: static; 
-                 display: block; 
-                 background-color: transparent;
-                 border: none;
-                 box-shadow: none;
-                 padding: 0;
-                 min-width: auto;
-                 border-radius: 0;
-             }
-             .nav-links li:hover > .dropdown-menu {
-                  display: block; 
-             }
-             .dropdown-menu li a {
-                  padding: 0.5rem 1rem 0.5rem 2rem; 
-                  font-size: 0.9rem;
-                  text-align: left;
-             }
-              .dropdown-menu li a:hover {
-                   background-color: var(--hover-bg); 
-              }
-              
-              .nav-links > li > a { 
-                   display: block; 
-              }
-              /* Canonical Mobile Dropdown Styles End */
-        }
-         /* Canonical Responsive Header Styles End */
-         /* Canonical Header & Nav Styles End */
-
-        /* Partnerships Content Styles */
+        /* Partnerships Content */
         .partnerships-content-section {
-            padding: 4rem 0;
+            padding: 8rem 0 4rem;
             background-color: var(--dark-bg);
         }
 
@@ -271,7 +138,7 @@
             background-color: var(--card-bg);
             padding: 3rem 2rem;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             max-width: 900px;
             margin: 0 auto;
         }
@@ -282,37 +149,37 @@
             margin-bottom: 2.5rem;
             font-size: 2.2rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .partnerships-card p {
-            font-size: 1.15rem; /* Slightly larger text */
+            font-size: 1.15rem;
             line-height: 1.8;
-            color: var(--light-text); /* Lighter text for better readability */
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
         }
-        
-        /* Combined Logo Container Styles (copied from about.html) */
+
+        /* Logo Container */
         .logo-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem; /* Adjust spacing between logos */
+            gap: 2rem;
             margin-top: 2.5rem;
-            flex-wrap: wrap; /* Allow wrapping on small screens */
+            flex-wrap: wrap;
         }
 
         .about-logo {
-            height: 120px; /* Match about.html size */
+            height: 120px;
             width: auto;
         }
 
         .ccib-logo {
-            height: 100px; /* Match about.html size */
+            height: 100px;
             width: auto;
             transition: transform 0.3s ease;
             filter: brightness(1.1);
-            padding: 12px; /* Match about.html padding */
-            background-color: rgba(255, 255, 255, 0.15); /* Match about.html background */
+            padding: 12px;
+            background-color: rgba(255, 255, 255, 0.15);
             border-radius: 8px;
         }
         
@@ -320,230 +187,70 @@
             transform: scale(1.05);
         }
         
-        /* Footer Styles */
+        /* Footer overrides */
         footer {
             background-color: var(--darker-bg);
-            color: var(--muted-text);
-            padding: 3rem 0 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .footer-links h3,
+        .footer-services h3,
+        .footer-contact h3 {
+            color: var(--text-light);
         }
 
-        .footer-logo .footer-main-logo {
-            height: 60px;
-            margin-bottom: 1rem;
-        }
-        .footer-logo .footer-ccib-logo {
-            height: 45px;
-            width: auto;
+        .footer-links a,
+        .footer-services a,
+        .footer-contact a {
+            color: var(--text-muted);
         }
 
-        footer h3 {
-            color: var(--light-text);
-            font-weight: 600;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        
-        footer ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        footer ul li {
-            margin-bottom: 0.7rem;
-        }
-        
-        footer a {
-            color: var(--muted-text);
-            transition: all 0.3s ease;
-        }
-
-        footer a:hover {
+        .footer-links a:hover,
+        .footer-services a:hover,
+        .footer-contact a:hover {
             color: var(--accent-color);
-            padding-left: 5px;
         }
-        
+
         .footer-contact p {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            margin-bottom: 0.7rem;
-            font-size: 0.95rem;
-            color: var(--muted-text); /* Ensure contact text uses muted color */
+            color: var(--text-muted);
         }
-        
+
         .footer-contact p i {
-             color: var(--accent-color); 
-             width: 15px; /* Align icons */
+            color: var(--accent-color);
         }
 
         .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
         }
-        
-        /* Responsive Styles */
+
+        .footer-bottom p {
+            color: var(--text-muted);
+        }
+
+        /* Mobile overrides */
         @media screen and (max-width: 768px) {
             .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px; /* Adjusted to header height */
-                gap: 0;
-                flex-direction: column;
                 background-color: var(--darker-bg);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid var(--border-color);
             }
 
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 1rem 0;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .hamburger.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-            
             .partnerships-content-section {
-                 padding: 3rem 0;
+                padding-top: 6rem;
             }
             
             .partnerships-card {
-                margin: 0 1rem; /* Add horizontal margin */
+                margin: 0 1rem;
                 padding: 2rem 1.5rem;
             }
 
             .partnerships-card h2 {
                 font-size: 1.8rem;
-                margin-bottom: 2rem;
             }
 
             .partnerships-card p {
                 font-size: 1.05rem;
             }
-            
-             .footer-content {
-                 grid-template-columns: 1fr; /* Stack columns on smaller screens */
-                 text-align: center;
-             }
-             
-             .footer-logo {
-                 margin-bottom: 1.5rem;
-             }
-             
-             .footer-contact p {
-                 justify-content: center;
-             }
         }
-
-        /* Dropdown Menu Styles */
-        .nav-links li {
-            position: relative; /* Needed for absolute positioning of dropdown */
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            left: 0;
-            top: 100%; /* Position below the parent li */
-            background-color: var(--darker-bg);
-            list-style: none;
-            padding: 0.5rem 0;
-            margin: 0;
-            min-width: 200px; /* Adjust width as needed */
-            z-index: 1000;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: none; /* Remove top border as it connects to header */
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-links li:hover > .dropdown-menu {
-            display: block; /* Show dropdown on hover */
-        }
-
-        .dropdown-menu li {
-            margin: 0; /* Override default li margin */
-        }
-
-        .dropdown-menu li a {
-            display: block;
-            padding: 0.7rem 1rem;
-            color: var(--muted-text);
-            font-weight: 500; /* Slightly lighter weight */
-            font-size: 0.85rem; /* Slightly smaller font */
-            text-transform: none; /* Keep case as is */
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
-        .dropdown-menu li a:hover {
-            background-color: var(--hover-bg);
-            color: var(--accent-color);
-        }
-        /* Remove the underline effect from dropdown items */
-        .dropdown-menu li a::after {
-             display: none; 
-        }
-
-        /* Adjust mobile view for dropdown */
-        @media screen and (max-width: 768px) {
-            .dropdown-menu {
-                position: static; /* Static positioning in mobile */
-                display: block; /* Always block */
-                background-color: transparent;
-                border: none;
-                box-shadow: none;
-                padding: 0;
-                min-width: auto;
-                border-radius: 0;
-            }
-            .nav-links li:hover > .dropdown-menu {
-                 display: block; /* Keep visible */
-            }
-            .dropdown-menu li a {
-                 padding: 0.5rem 1rem 0.5rem 2rem; /* Indent mobile dropdown items */
-                 font-size: 0.9rem;
-                 text-align: left;
-            }
-             .dropdown-menu li a:hover {
-                  background-color: var(--hover-bg); /* Keep hover */
-             }
-             /* Ensure parent "Services" link is clickable in mobile */
-             .nav-links > li > a { 
-                  display: block; /* Make sure parent link takes space */
-             }
-        }
-
     </style>
 </head>
 <body>
