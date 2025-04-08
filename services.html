@@ -110,7 +110,21 @@
 
         .services-hero h1, .services-hero p {
             color: var(--light-text);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
         }
+        
+         .services-hero .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+         }
 
         .services-content {
             background-color: var(--dark-bg);
@@ -209,13 +223,34 @@
         .service-category {
             margin-bottom: 4rem;
             background-color: var(--card-bg);
-            padding: 2.5rem 2rem;
+            padding: 0;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
         }
+        
+        .service-category:nth-child(odd) .service-image-container {
+             order: 2;
+        }
+         .service-category:nth-child(odd) .service-text-content {
+             order: 1;
+         }
+         .service-category:nth-child(even) .service-image-container {
+             order: 1;
+         }
+         .service-category:nth-child(even) .service-text-content {
+             order: 2;
+         }
 
-        .service-category:last-child {
-            margin-bottom: 0;
+        .service-text-content {
+            padding: 2.5rem 2rem;
+        }
+        
+        .service-image-container {
+             position: relative;
+             min-height: 300px;
         }
 
         .service-category h2 {
@@ -255,30 +290,40 @@
             border-left: 3px solid var(--dark-accent);
         }
         .sub-service h3 {
-            margin-top: 0; /* Remove top margin for sub-service headings */
-             font-size: 1.4rem; /* Slightly smaller sub-headings */
-             color: var(--accent-color); /* Use accent color for sub-headings */
+            margin-top: 0;
+             font-size: 1.4rem;
+             color: var(--accent-color);
+        }
+
+        @media screen and (max-width: 992px) {
+             .service-category {
+                 grid-template-columns: 1fr;
+             }
+             .service-category:nth-child(odd) .service-image-container, 
+             .service-category:nth-child(even) .service-image-container {
+                 order: 1;
+             }
+             .service-category:nth-child(odd) .service-text-content, 
+             .service-category:nth-child(even) .service-text-content {
+                 order: 2;
+             }
+             .service-image-slider {
+                 position: relative;
+                 height: auto;
+                 aspect-ratio: 16 / 9;
+                 border-radius: 0;
+             }
+              .service-image-container {
+                  min-height: 0;
+              }
+              .slider-wrapper img {
+                   height: auto;
+              }
         }
 
         @media screen and (max-width: 768px) {
-            .service-detail-section {
-                padding: 3rem 0;
-            }
-            .service-category {
-                padding: 2rem 1rem;
-                margin: 0 1rem 3rem 1rem; /* Add horizontal margin for card effect */
-            }
-            .service-category h2 {
-                font-size: 1.8rem;
-            }
-             .service-category h3 {
-                 font-size: 1.4rem;
-             }
-             .sub-service h3 {
-                 font-size: 1.3rem;
-             }
-            .service-category p {
-                font-size: 1rem;
+            .service-text-content {
+                padding: 2rem 1.5rem;
             }
         }
 
@@ -322,25 +367,23 @@
 
         /* Image Slider Styles */
         .service-image-slider {
-            position: relative;
-            max-width: 100%; /* Slider takes full width of its container */
-            margin: 2rem auto 0; /* Space above slider */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
             overflow: hidden;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .slider-wrapper {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+            border-radius: 0;
+            border: none;
         }
 
         .slider-wrapper img {
             width: 100%;
-            flex-shrink: 0; /* Prevent images from shrinking */
+            height: 100%;
+            flex-shrink: 0;
             display: block;
             object-fit: cover;
-            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
         }
 
         .slider-nav {
@@ -412,78 +455,87 @@
 
             <!-- Service Category 1: Comprehensive Crew Truck Services -->
             <div id="crew-truck-services" class="service-category">
-                <h2>Comprehensive Crew Truck Services</h2>
-                <p>Loyalty 6 Energy Services specializes in providing high-quality <strong>pipefitting and crew truck services</strong>, the core of our operations. Our team brings extensive industry expertise, built on years of hands-on experience across the oil and gas sectors of Northern British Columbia and Alberta.</p>
-                <p>We offer a full roster of skilled pipefitters and field crews capable of supporting a wide range of project requirements. Loyalty 6 is committed to delivering responsive, reliable service — <strong>our crews are available 24/7</strong> and prepared to mobilize wherever and whenever our clients need us.</p>
-                <p>Our areas of specialization include the construction, maintenance, repair, and decommissioning of oil and gas wellsites and facilities. If your project involves oil and gas infrastructure, Loyalty 6 Energy Services has the capability and experience to get the job done efficiently and safely.</p>
-                <p>We are committed to delivering every project with <strong>exceptional quality, professionalism, and reliable workmanship</strong>. Our priority is to complete all work safely, on schedule, and within budget.</p>
+                <div class="service-text-content">
+                    <h2>Comprehensive Crew Truck Services</h2>
+                    <p>Loyalty 6 Energy Services specializes in providing high-quality <strong>pipefitting and crew truck services</strong>, the core of our operations. Our team brings extensive industry expertise, built on years of hands-on experience across the oil and gas sectors of Northern British Columbia and Alberta.</p>
+                    <p>We offer a full roster of skilled pipefitters and field crews capable of supporting a wide range of project requirements. Loyalty 6 is committed to delivering responsive, reliable service — <strong>our crews are available 24/7</strong> and prepared to mobilize wherever and whenever our clients need us.</p>
+                    <p>Our areas of specialization include the construction, maintenance, repair, and decommissioning of oil and gas wellsites and facilities. If your project involves oil and gas infrastructure, Loyalty 6 Energy Services has the capability and experience to get the job done efficiently and safely.</p>
+                    <p>We are committed to delivering every project with <strong>exceptional quality, professionalism, and reliable workmanship</strong>. Our priority is to complete all work safely, on schedule, and within budget.</p>
 
-                <div class="sub-service">
-                   <h3>Construction</h3>
-                   <p>At Loyalty 6 Energy Services, we support the planning and execution of projects of all sizes — from small-scale initiatives to major facility new construction. Whether it's a complete build or something in between, our team is equipped to ensure seamless project delivery.</p>
-                </div>
-
-                <div class="sub-service">
-                   <h3>Maintenance</h3>
-                   <p>For ongoing preventative maintenance, we can follow your existing program or assist in developing a comprehensive new plan tailored to your operation's needs. We recognize the impact that delays can have in the oil and gas industry. That's why, during maintenance operations, we focus on minimizing downtime. On every project, Loyalty 6 Energy Services works diligently to keep your operations running efficiently and without disruption.</p>
-                </div>
-                
-                 <div class="sub-service">
-                    <h3>Turnarounds</h3>
-                    <p>We support the planning and execution of major facility turnarounds. During turnaround operations, we focus on minimizing downtime and expediting return to full production. On every project, Loyalty 6 Energy Services works diligently to get your facilities back online quickly and safely.</p>
-                 </div>
-
-                 <div class="sub-service">
-                    <h3>Mechanical Work & Pipefitting</h3>
-                    <p>As specialists in pipefitting and mechanical services, our skilled crews handle the repair and maintenance of oil and gas wellsites and facilities. We ensure all mechanical work meets rigorous safety and quality standards.</p>
-                 </div>
-
-                 <!-- Crew Truck Image Slider -->
-                 <div class="service-image-slider" data-slider-id="crew-truck">
-                    <div class="slider-wrapper">
-                        <img src="images/turn.jpeg" alt="Turnaround Service Image">
-                        <img src="images/construction.jpeg" alt="Construction Service Image">
-                        <img src="images/mech.jpeg" alt="Mechanical Service Image">
-                        <img src="images/maint.jpeg" alt="Maintenance Service Image">
+                    <div class="sub-service">
+                       <h3>Construction</h3>
+                       <p>At Loyalty 6 Energy Services, we support the planning and execution of projects of all sizes — from small-scale initiatives to major facility new construction. Whether it's a complete build or something in between, our team is equipped to ensure seamless project delivery.</p>
                     </div>
-                    <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
-                    <button class="slider-nav next" aria-label="Next image">&#10095;</button>
+
+                    <div class="sub-service">
+                       <h3>Maintenance</h3>
+                       <p>For ongoing preventative maintenance, we can follow your existing program or assist in developing a comprehensive new plan tailored to your operation's needs. We recognize the impact that delays can have in the oil and gas industry. That's why, during maintenance operations, we focus on minimizing downtime. On every project, Loyalty 6 Energy Services works diligently to keep your operations running efficiently and without disruption.</p>
+                    </div>
+                    
+                     <div class="sub-service">
+                        <h3>Turnarounds</h3>
+                        <p>We support the planning and execution of major facility turnarounds. During turnaround operations, we focus on minimizing downtime and expediting return to full production. On every project, Loyalty 6 Energy Services works diligently to get your facilities back online quickly and safely.</p>
+                     </div>
+
+                     <div class="sub-service">
+                        <h3>Mechanical Work & Pipefitting</h3>
+                        <p>As specialists in pipefitting and mechanical services, our skilled crews handle the repair and maintenance of oil and gas wellsites and facilities. We ensure all mechanical work meets rigorous safety and quality standards.</p>
+                     </div>
+                </div>
+                <div class="service-image-container">
+                    <!-- Crew Truck Image Slider -->
+                    <div class="service-image-slider" data-slider-id="crew-truck">
+                        <div class="slider-wrapper">
+                            <img src="images/turn.jpeg" alt="Turnaround Service Image">
+                            <img src="images/construction.jpeg" alt="Construction Service Image">
+                            <img src="images/mech.jpeg" alt="Mechanical Service Image">
+                            <img src="images/maint.jpeg" alt="Maintenance Service Image">
+                        </div>
+                        <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
+                        <button class="slider-nav next" aria-label="Next image">&#10095;</button>
+                    </div>
                 </div>
             </div>
 
             <!-- Service Category 2: General Labour -->
             <div id="general-labour" class="service-category">
-                <h2>General Labour</h2>
-                <p>Loyalty 6 Energy Services provides adaptable and skilled general labour support across British Columbia and Alberta. Our crews are equipped to assist with essential site tasks such as preparation, cleanup, material handling, and providing reliable backup for specialized trades, ensuring your project runs smoothly.</p>
-                <p>We supply safety-trained and dependable labourers ready to integrate seamlessly into your project workflow. Understanding the dynamic needs of oil and gas and industrial projects, our teams are committed to efficiency, safety, and contributing effectively to maintain a productive worksite.</p>
-                <p>Whether you require short-term assistance or ongoing site support, Loyalty 6 delivers versatile labour solutions tailored to your operational requirements.</p>
-
-                <!-- General Labour Image Slider -->
-                <div class="service-image-slider" data-slider-id="general-labour">
-                    <div class="slider-wrapper">
-                        <img src="images/general-labour.jpg" alt="General Labour Service Image">
-                        <!-- Add more relevant images if available -->
+                <div class="service-text-content">
+                    <h2>General Labour</h2>
+                    <p>Loyalty 6 Energy Services provides adaptable and skilled general labour support across British Columbia and Alberta. Our crews are equipped to assist with essential site tasks such as preparation, cleanup, material handling, and providing reliable backup for specialized trades, ensuring your project runs smoothly.</p>
+                    <p>We supply safety-trained and dependable labourers ready to integrate seamlessly into your project workflow. Understanding the dynamic needs of oil and gas and industrial projects, our teams are committed to efficiency, safety, and contributing effectively to maintain a productive worksite.</p>
+                    <p>Whether you require short-term assistance or ongoing site support, Loyalty 6 delivers versatile labour solutions tailored to your operational requirements.</p>
+                </div>
+                <div class="service-image-container">
+                    <!-- General Labour Image Slider -->
+                    <div class="service-image-slider" data-slider-id="general-labour">
+                        <div class="slider-wrapper">
+                            <img src="images/general-labour.jpg" alt="General Labour Service Image">
+                            <!-- Add more relevant images if available -->
+                        </div>
+                         <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
+                         <button class="slider-nav next" aria-label="Next image">&#10095;</button>
                     </div>
-                     <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
-                     <button class="slider-nav next" aria-label="Next image">&#10095;</button>
                 </div>
             </div>
 
             <!-- Service Category 3: Hot Shot Services -->
             <div id="hot-shot" class="service-category">
-                <h2>Hot Shot Services</h2>
-                <p>Loyalty 6 Energy Services proudly offers reliable hotshot, delivery, and pilot truck services throughout British Columbia and Alberta. Whether it's urgent equipment, critical parts, or scheduled deliveries, our team ensures that your materials arrive safely and on time—every time.</p>
-                <p>We maintain a diverse fleet of well-maintained trailers and transport units to accommodate a wide variety of load requirements. From light-duty hauls to oversized and specialized freight, we are equipped to handle the unique demands of the oil and gas sector and other industrial operations.</p>
-                <p>Our experienced drivers and dispatch team understand the importance of timely logistics in high-stakes environments. We are committed to safety, efficiency, and clear communication from dispatch to delivery.</p>
-
-                <!-- Hot Shot Image Slider -->
-                <div class="service-image-slider" data-slider-id="hot-shot">
-                    <div class="slider-wrapper">
-                        <img src="images/hotshot.jpeg" alt="Hot Shot Service Image">
-                         <!-- Add more relevant images if available -->
+                <div class="service-text-content">
+                    <h2>Hot Shot Services</h2>
+                    <p>Loyalty 6 Energy Services proudly offers reliable hotshot, delivery, and pilot truck services throughout British Columbia and Alberta. Whether it's urgent equipment, critical parts, or scheduled deliveries, our team ensures that your materials arrive safely and on time—every time.</p>
+                    <p>We maintain a diverse fleet of well-maintained trailers and transport units to accommodate a wide variety of load requirements. From light-duty hauls to oversized and specialized freight, we are equipped to handle the unique demands of the oil and gas sector and other industrial operations.</p>
+                    <p>Our experienced drivers and dispatch team understand the importance of timely logistics in high-stakes environments. We are committed to safety, efficiency, and clear communication from dispatch to delivery.</p>
+                </div>
+                <div class="service-image-container">
+                    <!-- Hot Shot Image Slider -->
+                    <div class="service-image-slider" data-slider-id="hot-shot">
+                        <div class="slider-wrapper">
+                            <img src="images/hotshot.jpeg" alt="Hot Shot Service Image">
+                             <!-- Add more relevant images if available -->
+                        </div>
+                        <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
+                        <button class="slider-nav next" aria-label="Next image">&#10095;</button>
                     </div>
-                    <button class="slider-nav prev" aria-label="Previous image">&#10094;</button>
-                    <button class="slider-nav next" aria-label="Next image">&#10095;</button>
                 </div>
             </div>
 
