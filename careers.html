@@ -342,6 +342,34 @@
              }
         }
 
+        /* Add styling for the logo text */
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-text {
+            color: #B8C49D;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-left: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        /* Increase specificity for logo text styling to override potential overrides */
+        .logo a .logo-text,
+        header .logo a .logo-text,
+        body header .container .logo a .logo-text {
+            color: #B8C49D !important; /* Hardcoded color with !important flag */
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-left: 0.75rem;
+            letter-spacing: 1px;
+        }
+
     </style>
 </head>
 <body>
@@ -350,6 +378,7 @@
             <div class="logo">
                 <a href="index.html">
                     <img src="images/l6logonobg.png" alt="Loyalty 6 Energy Services Logo" class="logo-image">
+                    <span class="logo-text">Loyalty 6 Energy Services LTD.</span>
                 </a>
             </div>
             <nav>
