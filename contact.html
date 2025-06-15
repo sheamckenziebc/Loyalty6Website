@@ -191,6 +191,94 @@
             font-weight: 600;
         }
 
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background-color: rgba(184, 196, 157, 0.1);
+        }
+
+        .social-icon:hover {
+            color: var(--light-text);
+            transform: translateY(-2px);
+            background-color: var(--accent-color);
+        }
+
+        /* Enhanced social links styling to match index.html */
+        .contact-card .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .contact-card .social-links .social-icon {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+            padding: 0;
+            border-radius: 0;
+            background-color: transparent;
+        }
+
+        .contact-card .social-links .social-icon:hover {
+            color: var(--light-text);
+            transform: none;
+            background-color: transparent;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--darker-bg);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-accent);
+            color: var(--light-text);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 196, 157, 0.3);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            background-color: transparent;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--darker-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 196, 157, 0.3);
+        }
+
         footer {
             background-color: var(--darker-bg);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -404,17 +492,31 @@
                     <p>Dawson Creek, BC</p>
                     <p>Serving British Columbia & Alberta</p>
                 </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Follow Us</h3>
+                    <p>Connect with us on social media</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/loyalty-6-energy-services/" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61576940174700#" class="social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
             
             <div style="text-align: center; background-color: var(--card-bg); padding: 3rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
                 <h2 style="color: var(--light-text); margin-bottom: 1.5rem;">Ready to Get Started?</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--muted-text);">Contact us today for quotes on crew truck services, general labour, hot shot delivery, or any of our comprehensive oil and gas field services.</p>
-                <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="tel:+12507194573" style="display: inline-block; padding: 1rem 2rem; background-color: var(--accent-color); color: var(--darker-bg); font-weight: 600; border-radius: 4px; transition: all 0.3s ease;">
+                <div class="cta-buttons">
+                    <a href="tel:+12507194573" class="btn btn-primary">
                         <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
                         Call Now
                     </a>
-                    <a href="mailto:loyalty6energy@gmail.com" style="display: inline-block; padding: 1rem 2rem; border: 1px solid var(--accent-color); color: var(--accent-color); font-weight: 600; border-radius: 4px; transition: all 0.3s ease;">
+                    <a href="mailto:loyalty6energy@gmail.com" class="btn btn-secondary">
                         <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
                         Send Email
                     </a>
