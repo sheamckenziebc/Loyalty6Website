@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers – Build Your Future with Loyalty 6 Energy Services</title>
-    <meta name="description" content="Competitive pay, training and advancement for tradespeople & drivers ready to fuel the energy sector's success.">
-    <link rel="canonical" href="https://loyalty6.ca/careers.html" />
-    <meta property="og:title" content="Careers – Build Your Future with Loyalty 6 Energy Services" />
-    <meta property="og:description" content="Competitive pay, training and advancement for tradespeople & drivers ready to fuel the energy sector's success." />
-    <meta property="og:url" content="https://loyalty6.ca/careers.html" />
+    <title>Contact Loyalty 6 Energy Services – Dawson Creek, BC</title>
+    <meta name="description" content="Get in touch 24/7 for quotes, mobilisation or career enquiries: 250‑719‑4573 • loyalty6energy@gmail.com">
+    <link rel="canonical" href="https://loyalty6.ca/contact.html" />
+    <meta property="og:title" content="Contact Loyalty 6 Energy Services – Dawson Creek, BC" />
+    <meta property="og:description" content="Get in touch 24/7 for quotes, mobilisation or career enquiries: 250‑719‑4573 • loyalty6energy@gmail.com" />
+    <meta property="og:url" content="https://loyalty6.ca/contact.html" />
     <meta property="og:image" content="https://loyalty6.ca/images/herobgnew.jpeg" />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/jpeg" href="images/thumbnail.jpeg">
@@ -25,6 +25,7 @@
             --light-text: #e0e0e0;
             --muted-text: #b0b0b0;
             --accent-color: #B8C49D;
+            --secondary-color: #f39c12;
             --dark-accent: #3a4a1c;
             --card-bg: #242424;
             --hover-bg: #2a2a2a;
@@ -34,7 +35,6 @@
             font-family: 'Rajdhani', sans-serif;
         }
 
-        /* Base font settings */
         body {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 500;
@@ -71,6 +71,7 @@
 
         .nav-links a {
             color: var(--muted-text);
+            position: relative;
         }
 
         .nav-links a:hover,
@@ -78,96 +79,116 @@
             color: var(--accent-color);
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .hamburger .bar {
             background-color: var(--light-text);
         }
 
-        .careers-hero {
-            position: relative;
-            height: 60vh;
-            min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/herobgnew.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--darker-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        }
+
+        .contact-content {
+            background-color: var(--dark-bg);
+            padding: 6rem 0 4rem;
+        }
+
+        .contact-header {
             text-align: center;
-            padding: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .careers-hero .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .careers-hero h1 {
+        .contact-header h1 {
             color: var(--accent-color);
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-align: center;
-            width: 100%;
         }
 
-        .careers-hero p {
-            color: var(--light-text);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 800px;
-        }
-
-        .careers-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            background-color: var(--dark-bg);
-        }
-
-        .careers-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+        .contact-header p {
             color: var(--muted-text);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .careers-cta {
-            margin-top: 3rem;
-            text-align: center;
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
             background-color: var(--card-bg);
             padding: 2rem;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        .careers-cta p {
-            font-size: 1.3rem;
-            font-weight: 600;
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
             margin-bottom: 1rem;
-            color: var(--light-text);
         }
 
-        .careers-cta a {
+        .contact-card h3 {
+            color: var(--light-text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--muted-text);
+            line-height: 1.6;
+        }
+
+        .contact-card a {
             color: var(--accent-color);
             font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .careers-cta a:hover {
-            color: var(--light-text);
-        }
-
-        .careers-cta i {
-            margin-right: 0.5rem;
         }
 
         footer {
@@ -206,68 +227,10 @@
             color: var(--muted-text);
         }
 
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                gap: 0;
-                flex-direction: column;
-                background-color: var(--darker-bg);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 1rem 0;
-            }
-
-            .careers-hero {
-                min-height: 400px;
-                padding: 1rem;
-            }
-
-            .careers-hero h1 {
-                font-size: 2.2rem;
-                padding: 0 1rem;
-                width: 100%;
-            }
-
-            .careers-content {
-                padding: 3rem 1.5rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .careers-hero h1 {
-                font-size: 1.8rem;
-                line-height: 1.3;
-                padding: 0;
-            }
-            
-            .careers-hero {
-                height: auto;
-                min-height: 350px;
-                padding: 2rem 0.5rem;
-            }
-        }
-
-        @media screen and (max-width: 400px) {
-            .careers-hero h1 {
-                font-size: 1.6rem;
-                letter-spacing: 1px;
-            }
-            
-            .careers-hero {
-                min-height: 300px;
-            }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         /* Dropdown Menu Styles */
@@ -310,10 +273,12 @@
             letter-spacing: 0.5px;
             white-space: nowrap;
         }
+        
         .dropdown-menu li a:hover {
             background-color: var(--hover-bg);
             color: var(--accent-color);
         }
+        
         /* Remove the underline effect from dropdown items */
         .dropdown-menu li a::after {
              display: none; 
@@ -375,7 +340,6 @@
             margin-left: 0.75rem;
             letter-spacing: 1px;
         }
-
     </style>
 </head>
 <body>
@@ -390,7 +354,7 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                     <li class="dropdown"> 
+                    <li class="dropdown"> 
                         <a href="services.html">Services</a> 
                         <ul class="dropdown-menu">
                             <li><a href="services.html#crew-truck-services">Crew Truck Services</a></li>
@@ -401,8 +365,8 @@
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="partnerships.html">Our Partnerships</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="careers.html" class="active">Careers</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -413,21 +377,48 @@
         </div>
     </header>
 
-    <section class="careers-hero">
+    <section class="contact-content">
         <div class="container">
-            <h1>Build Your Career with Loyalty 6 Energy Services</h1>
-        </div>
-    </section>
-
-    <section class="careers-content">
-        <div class="container">
-            <p>Loyalty 6 Energy Services is always looking for experienced foremen and hardworking helpers to join our team. We offer a professional, safety-focused work environment where your skills and dedication are valued. As a locally owned and operated company, we take pride in a workplace built on integrity, quality, and teamwork.</p>
+            <div class="contact-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with Loyalty 6 Energy Services for all your oil and gas service needs. We're available 24/7 to support your operations.</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p><a href="tel:+12507194573">250-719-4573</a></p>
+                    <p>Available 24/7 for emergency callouts</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:loyalty6energy@gmail.com">loyalty6energy@gmail.com</a></p>
+                    <p>We respond to all inquiries within 24 hours</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Dawson Creek, BC</p>
+                    <p>Serving British Columbia & Alberta</p>
+                </div>
+            </div>
             
-            <p>We believe in rewarding expertise and commitment. Pay is adjusted based on experience and additional schooling, recognizing the value of continued learning and professional growth. Whether you're a seasoned leader or looking to build your career in the oil and gas industry, we offer competitive wages, career advancement opportunities, and a supportive team that prioritizes excellence.</p>
-
-            <div class="careers-cta">
-                <p>If you're ready for a rewarding and stable career, we want to hear from you.</p>
-                <p>Send your resume and cover letter to: <a href="mailto:loyalty6energy@gmail.com"><i class="fas fa-envelope"></i>loyalty6energy@gmail.com</a></p>
+            <div style="text-align: center; background-color: var(--card-bg); padding: 3rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <h2 style="color: var(--light-text); margin-bottom: 1.5rem;">Ready to Get Started?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--muted-text);">Contact us today for quotes on crew truck services, general labour, hot shot delivery, or any of our comprehensive oil and gas field services.</p>
+                <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:+12507194573" style="display: inline-block; padding: 1rem 2rem; background-color: var(--accent-color); color: var(--darker-bg); font-weight: 600; border-radius: 4px; transition: all 0.3s ease;">
+                        <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                        Call Now
+                    </a>
+                    <a href="mailto:loyalty6energy@gmail.com" style="display: inline-block; padding: 1rem 2rem; border: 1px solid var(--accent-color); color: var(--accent-color); font-weight: 600; border-radius: 4px; transition: all 0.3s ease;">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                        Send Email
+                    </a>
+                </div>
             </div>
         </div>
     </section>
