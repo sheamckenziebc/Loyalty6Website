@@ -34,7 +34,10 @@
             --dark-accent: #3a4a1c;
             --card-bg: #242424;
             --hover-bg: #2a2a2a;
-            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            font-family: 'Rajdhani', sans-serif;
         }
 
         /* Base font settings */
@@ -70,20 +73,11 @@
         header {
             background-color: var(--darker-bg);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 0;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
         }
 
         .nav-links a {
             color: var(--muted-text);
             position: relative;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
         }
 
         .nav-links a:hover,
@@ -91,7 +85,6 @@
             color: var(--accent-color);
         }
 
-        /* Create orange underline that appears on hover */
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -103,7 +96,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Show underline on hover and active states */
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
@@ -135,79 +127,152 @@
             .nav-links li {
                 margin: 1rem 0;
             }
-            
-            /* Restore partnerships mobile styling */
-            .partnerships-content-section {
-                padding-top: 6rem;
-            }
-            
-            .partnerships-card {
-                margin: 0 1rem;
-                padding: 2rem 1.5rem;
-            }
-
-            .partnerships-card h2 {
-                font-size: 1.8rem;
-            }
-
-            .partnerships-card p {
-                font-size: 1.05rem;
-            }
         }
 
-        /* Dropdown menu styling and positioning */
-        /* Parent dropdown item */
-        .nav-links > li.dropdown {
-            position: relative !important;
+        footer {
+            background-color: var(--darker-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Main dropdown styling */
+        .footer-links h3,
+        .footer-services h3,
+        .footer-contact h3 {
+            color: var(--light-text);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a,
+        .footer-services a,
+        .footer-contact a {
+            color: var(--muted-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-services a:hover,
+        .footer-contact a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--muted-text);
+        }
+
+        .footer-services h3 a {
+            color: var(--light-text);
+        }
+
+        /* Dropdown Menu Styles */
+        .nav-links li {
+            position: relative; /* Needed for absolute positioning of dropdown */
+        }
+
         .dropdown-menu {
-            display: none !important;
-            background-color: var(--darker-bg) !important;
-            border: 1px solid var(--border-color) !important;
-            border-top: none !important;
-            border-radius: 0 0 5px 5px !important;
-            overflow: hidden !important;
-        }
-        
-        /* Dropdown positioning */
-        .nav-links > li.dropdown > .dropdown-menu {
-            position: absolute !important;
-            top: 100% !important;
-            left: 0 !important;
-            z-index: 1000 !important;
-            width: auto !important;
-            min-width: 220px !important;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4) !important;
-            margin-top: 0 !important;
-            padding: 0.5rem 0 !important;
-        }
-        
-        /* Dropdown display control */
-        .nav-links > li.dropdown:hover > .dropdown-menu {
-            display: block !important;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%; /* Position below the parent li */
+            background-color: var(--darker-bg);
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+            min-width: 200px; /* Adjust width as needed */
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: none; /* Remove top border as it connects to header */
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Dropdown item styling */
+        .nav-links li:hover > .dropdown-menu {
+            display: block; /* Show dropdown on hover */
+        }
+
+        .dropdown-menu li {
+            margin: 0; /* Override default li margin */
+        }
+
         .dropdown-menu li a {
-            color: var(--text-muted) !important;
-            font-size: 0.85rem !important;
-            letter-spacing: 0.5px !important;
-            padding: 0.7rem 1rem !important;
-            display: block !important;
-            transition: background-color 0.3s ease, color 0.3s ease !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-            white-space: nowrap !important;
+            display: block;
+            padding: 0.7rem 1rem;
+            color: var(--muted-text);
+            font-weight: 500; /* Slightly lighter weight */
+            font-size: 0.85rem; /* Slightly smaller font */
+            text-transform: none; /* Keep case as is */
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
-
-        .dropdown-menu li:last-child a {
-            border-bottom: none !important;
+        .dropdown-menu li a:hover {
+            background-color: var(--hover-bg);
+            color: var(--accent-color);
         }
-
-        /* Prevent dropdown link underline animation */
+        /* Remove the underline effect from dropdown items */
         .dropdown-menu li a::after {
-            display: none !important;
+             display: none; 
+        }
+
+        /* Adjust mobile view for dropdown */
+        @media screen and (max-width: 768px) {
+            .dropdown-menu {
+                position: static; /* Static positioning in mobile */
+                display: block; /* Always block */
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                min-width: auto;
+                border-radius: 0;
+            }
+            .nav-links li:hover > .dropdown-menu {
+                 display: block; /* Keep visible */
+            }
+            .dropdown-menu li a {
+                 padding: 0.5rem 1rem 0.5rem 2rem; /* Indent mobile dropdown items */
+                 font-size: 0.9rem;
+                 text-align: left;
+            }
+             .dropdown-menu li a:hover {
+                  background-color: var(--hover-bg); /* Keep hover */
+             }
+             /* Ensure parent "Services" link is clickable in mobile */
+             .nav-links > li > a { 
+                  display: block; /* Make sure parent link takes space */
+             }
+        }
+
+        /* Add styling for the logo text */
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-text {
+            color: #B8C49D;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-left: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        /* Increase specificity for logo text styling to override potential overrides */
+        .logo a .logo-text,
+        header .logo a .logo-text,
+        body header .container .logo a .logo-text {
+            color: #B8C49D !important; /* Hardcoded color with !important flag */
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-left: 0.75rem;
+            letter-spacing: 1px;
         }
 
         /* Partnerships Content */
@@ -220,7 +285,7 @@
             background-color: var(--card-bg);
             padding: 3rem 2rem;
             border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 900px;
             margin: 0 auto;
         }
@@ -236,7 +301,7 @@
         .partnerships-card p {
             font-size: 1.15rem;
             line-height: 1.8;
-            color: var(--text-light);
+            color: var(--light-text);
             margin-bottom: 1.5rem;
         }
 
@@ -268,73 +333,24 @@
         .ccib-logo:hover {
             transform: scale(1.05);
         }
-        
-        /* Footer overrides */
-        footer {
-            background-color: var(--darker-bg);
-            border-top: 1px solid var(--border-color);
-        }
 
-        .footer-links h3,
-        .footer-services h3,
-        .footer-contact h3 {
-            color: var(--text-light);
-        }
+        @media screen and (max-width: 768px) {
+            .partnerships-content-section {
+                padding-top: 6rem;
+            }
+            
+            .partnerships-card {
+                margin: 0 1rem;
+                padding: 2rem 1.5rem;
+            }
 
-        .footer-links a,
-        .footer-services a,
-        .footer-contact a {
-            color: var(--text-muted);
-        }
+            .partnerships-card h2 {
+                font-size: 1.8rem;
+            }
 
-        .footer-links a:hover,
-        .footer-services a:hover,
-        .footer-contact a:hover {
-            color: var(--secondary-color);
-        }
-
-        .footer-contact p {
-            color: var(--text-muted);
-        }
-
-        .footer-contact p i {
-            color: var(--secondary-color);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-bottom p {
-            color: var(--text-muted);
-        }
-
-        /* Add styling for the logo text */
-        .logo a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        
-        .logo-text {
-            color: #B8C49D;
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-            margin-left: 0.75rem;
-            letter-spacing: 1px;
-        }
-
-        /* Increase specificity for logo text styling to override potential overrides */
-        .logo a .logo-text,
-        header .logo a .logo-text,
-        body header .container .logo a .logo-text {
-            color: #B8C49D !important; /* Hardcoded color with !important flag */
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 600;
-            font-size: 1.5rem;
-            margin-left: 0.75rem;
-            letter-spacing: 1px;
+            .partnerships-card p {
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
