@@ -285,10 +285,8 @@
             margin-top: 1.5rem;
         }
         
-        .about-overlay {
-            position: relative;
+        /* .about-overlay {
             border-radius: 8px;
-            overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background-color: var(--card-bg);
             margin: 2rem 0;
@@ -298,44 +296,38 @@
             width: 100%;
             height: auto;
             display: block;
-        }
+        } */
         
-        .about-overlay-content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(28, 35, 13, 0.95);
+        .about-content-wrapper {
+            padding: 2rem 0;
             color: var(--light-text);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 2rem;
-            overflow-y: auto;
         }
-        
-        .about-overlay-content p {
+
+        .about-content-wrapper p {
             margin-bottom: 1rem;
             font-size: 1.1rem;
             line-height: 1.7;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
             color: var(--light-text);
+            text-align: left; /* Ensure text is left-aligned */
         }
 
-        .about-overlay-content h3 {
+        .about-content-wrapper h3 {
             color: var(--accent-color);
             margin: 1.5rem 0 1rem;
             font-size: 1.4rem;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            text-align: left; /* Ensure heading is left-aligned */
         }
 
-        .about-overlay-content ul {
+        .about-content-wrapper ul {
             list-style: none;
             margin: 0 0 1.5rem 1rem;
+            padding-left: 0;
+            text-align: left; /* Ensure list is left-aligned */
         }
 
-        .about-overlay-content ul li {
+        .about-content-wrapper ul li {
             margin-bottom: 0.8rem;
             font-size: 1.1rem;
             line-height: 1.6;
@@ -345,7 +337,7 @@
             color: var(--light-text);
         }
 
-        .about-overlay-content ul li:before {
+        .about-content-wrapper ul li:before {
             content: "•";
             color: var(--accent-color);
             position: absolute;
@@ -355,7 +347,7 @@
 
         .logo-container {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Center logos at the bottom of the about section */
             align-items: center;
             gap: 2rem;
             margin-top: 2rem;
@@ -447,12 +439,9 @@
 
         /* Adjust mobile view for dropdown */
         @media screen and (max-width: 768px) {
-            .about-overlay-content {
-                position: relative;
-                background: var(--dark-bg);
-            }
             .logo-container {
                 flex-direction: column;
+                justify-content: center; /* Center for mobile */
             }
             .about-logo {
                 height: 100px;
@@ -514,6 +503,98 @@
             font-size: 1.5rem;
             margin-left: 0.75rem;
             letter-spacing: 1px;
+        }
+
+        /* COR Certification Section Styles */
+        .cor-certification {
+            margin: 2.5rem 0;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: left; /* Align COR section content to the left */
+        }
+
+        .cor-certification h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-align: left; /* Align COR section heading to the left */
+        }
+
+        .cor-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the start (left) */
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .cor-seal-image {
+            width: 150px;
+            height: auto;
+            max-width: 100%;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .cor-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            text-align: left; /* Ensure text is left-aligned */
+        }
+
+        @media screen and (min-width: 768px) {
+            .cor-content-wrapper {
+                flex-direction: row;
+                text-align: left;
+                justify-content: flex-start; /* Align content to the left for desktop */
+                gap: 2.5rem;
+            }
+
+            .cor-seal-image {
+                flex-shrink: 0;
+            }
+
+            .cor-text {
+                max-width: none; /* Remove max-width to prevent centering effect */
+            }
+        }
+
+        /* Footer Logo Container Styles */
+        .footer-logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-main-logo {
+            height: 100px; 
+            width: auto;
+            filter: brightness(1.1);
+        }
+
+        .footer-ccib-logo {
+            height: 80px; 
+            width: auto;
+            filter: brightness(1.1);
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+        }
+
+        .footer-cor-seal {
+            height: 80px; 
+            width: auto;
+            filter: brightness(1.1);
         }
     </style>
 </head>
@@ -578,45 +659,54 @@
                 <h2>About Loyalty 6</h2>
                 <p>Delivering excellence since 2017</p>
             </div>
-            <div class="about-overlay">
-                <img src="images/ourservices.jpg" alt="Loyalty 6 Energy Services Team" class="about-overlay-image">
-                <div class="about-overlay-content">
-                    <p>Loyalty 6 Energy Services is a locally owned and operated oil and gas service company based in Dawson Creek, British Columbia. Since our founding in 2017, we have built a reputation for excellence, reliability, and integrity, becoming a trusted partner in the energy sector.</p>
-                    
-                    <p>We specialize in a comprehensive range of pipefitting and energy services, including:</p>
-                    
-                    <ul>
-                        <li>Construction – Expert solutions for oil and gas infrastructure</li>
-                        <li>Decommissioning – Safe and efficient facility shutdowns</li>
-                        <li>Maintenance – Reliable upkeep to maximize operational efficiency</li>
-                        <li>Pipeline Layout – Precision planning and execution</li>
-                        <li>Turnaround Work & Planning – Strategic solutions for plant and facility overhauls</li>
-                    </ul>
+            <div class="about-content-wrapper">
+                <p>Loyalty 6 Energy Services is a locally owned and operated oil and gas service company based in Dawson Creek, British Columbia. Since our founding in 2017, we have built a reputation for excellence, reliability, and integrity, becoming a trusted partner in the energy sector.</p>
+                
+                <p>We specialize in a comprehensive range of pipefitting and energy services, including:</p>
+                
+                <ul>
+                    <li>Construction – Expert solutions for oil and gas infrastructure</li>
+                    <li>Decommissioning – Safe and efficient facility shutdowns</li>
+                    <li>Maintenance – Reliable upkeep to maximize operational efficiency</li>
+                    <li>Pipeline Layout – Precision planning and execution</li>
+                    <li>Turnaround Work & Planning – Strategic solutions for plant and facility overhauls</li>
+                </ul>
 
-                    <p>Our highly skilled team is dedicated to delivering top-quality workmanship while upholding the highest industry standards. We take pride in our commitment to safety, efficiency, and customer satisfaction, ensuring that every project is completed with precision and professionalism.</p>
+                <p>Our highly skilled team is dedicated to delivering top-quality workmanship while upholding the highest industry standards. We take pride in our commitment to safety, efficiency, and customer satisfaction, ensuring that every project is completed with precision and professionalism.</p>
 
-                    <h3>Our Values: The Foundation of Our Success</h3>
-                    <p>At Loyalty 6 Energy Services, we operate with a strong set of core values that define who we are and how we do business:</p>
+                <h3>Our Values: The Foundation of Our Success</h3>
+                <p>At Loyalty 6 Energy Services, we operate with a strong set of core values that define who we are and how we do business:</p>
 
-                    <ul>
-                        <li>Integrity – Honest, transparent, and ethical business practices.</li>
-                        <li>Pride – Commitment to excellence in every project, regardless of size.</li>
-                        <li>Loyalty – Dedication to our clients, team, and industry.</li>
-                        <li>Quality – Uncompromising standards in every aspect of our work.</li>
-                    </ul>
+                <ul>
+                    <li>Integrity – Honest, transparent, and ethical business practices.</li>
+                    <li>Pride – Commitment to excellence in every project, regardless of size.</li>
+                    <li>Loyalty – Dedication to our clients, team, and industry.</li>
+                    <li>Quality – Uncompromising standards in every aspect of our work.</li>
+                </ul>
 
-                    <h3>Commitment to Indigenous Business & Partnerships</h3>
-                    <p>Loyalty 6 Energy Services is a proud member of the Canadian Council for Indigenous Business (CCIB), reflecting our dedication to fostering meaningful Indigenous partnerships, economic growth, and sustainable business practices. We believe in building strong relationships with Indigenous communities and actively supporting inclusive and diverse industry participation.</p>
-
-                    <h3>Let's Build Success Together</h3>
-                    <p>At Loyalty 6 Energy Services, we don't just complete projects—we fuel success. Whether you need expert pipefitting, pipeline solutions, or maintenance services, our team is ready to exceed expectations.</p>
-
-                    <div class="logo-container">
-                        <img src="images/l6logonobg.png" alt="Loyalty 6 Energy Services Logo" class="about-logo">
-                        <a href="https://www.ccab.com/main/ccab_member/loyalty-6-energy-services-ltd/" target="_blank">
-                            <img src="images/cciblogo.png" alt="CCIB Logo" class="ccib-logo">
-                        </a>
+                <div class="cor-certification">
+                    <h3>Workplace Health & Safety: COR Certified</h3>
+                    <div class="cor-content-wrapper">
+                        <img src="images/cor-seal.png" alt="COR Certified Seal" class="cor-seal-image">
+                        <div class="cor-text">
+                            <p>Loyalty 6 Energy Services is proud to be COR certified in British Columbia and Alberta for workplace health and safety.</p>
+                            <p>This recognition affirms our commitment to doing things the right way: safely, responsibly, and to the highest standard. Our program has been independently audited, ensuring employees, partners, and clients can trust that safety always comes first.</p>
+                            <p>Safe work. Strong results. That’s Loyalty 6.</p>
+                        </div>
                     </div>
+                </div>
+
+                <h3>Commitment to Indigenous Business & Partnerships</h3>
+                <p>Loyalty 6 Energy Services is a proud member of the Canadian Council for Indigenous Business (CCIB), reflecting our dedication to fostering meaningful Indigenous partnerships, economic growth, and sustainable business practices. We believe in building strong relationships with Indigenous communities and actively supporting inclusive and diverse industry participation.</p>
+
+                <h3>Let's Build Success Together</h3>
+                <p>At Loyalty 6 Energy Services, we don't just complete projects—we fuel success. Whether you need expert pipefitting, pipeline solutions, or maintenance services, our team is ready to exceed expectations.</p>
+
+                <div class="logo-container">
+                    <img src="images/l6logonobg.png" alt="Loyalty 6 Energy Services Logo" class="about-logo">
+                    <a href="https://www.ccab.com/main/ccab_member/loyalty-6-energy-services-ltd/" target="_blank">
+                        <img src="images/cciblogo.png" alt="CCIB Logo" class="ccib-logo">
+                    </a>
                 </div>
             </div>
         </div>
@@ -625,13 +715,14 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
+                <div class="footer-logo-container">
                     <a href="index.html">
                         <img src="images/l6logonobg.png" alt="Loyalty 6 Energy Services Logo" class="footer-main-logo">
                     </a>
                     <a href="https://www.ccab.com/main/ccab_member/loyalty-6-energy-services-ltd/" target="_blank">
                         <img src="images/cciblogo.png" alt="CCIB Logo" class="footer-ccib-logo">
                     </a>
+                    <img src="images/cor-seal.png" alt="COR Certified Seal" class="footer-cor-seal">
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>

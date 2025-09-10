@@ -543,6 +543,36 @@
             letter-spacing: 1px;
         }
 
+        /* Footer Logo Container Styles */
+        .footer-logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-main-logo {
+            height: 100px; 
+            width: auto;
+            filter: brightness(1.1);
+        }
+
+        .footer-ccib-logo {
+            height: 80px; 
+            width: auto;
+            filter: brightness(1.1);
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+        }
+
+        .footer-cor-seal {
+            height: 80px; 
+            width: auto;
+            filter: brightness(1.1);
+        }
     </style>
 </head>
 <body>
@@ -659,13 +689,14 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
+                <div class="footer-logo-container">
                     <a href="index.html">
                         <img src="images/l6logonobg.png" alt="Loyalty 6 Energy Services Logo" class="footer-main-logo">
                     </a>
                     <a href="https://www.ccab.com/main/ccab_member/loyalty-6-energy-services-ltd/" target="_blank">
                         <img src="images/cciblogo.png" alt="CCIB Logo" class="footer-ccib-logo">
                     </a>
+                    <img src="images/cor-seal.png" alt="COR Certified Seal" class="footer-cor-seal">
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
