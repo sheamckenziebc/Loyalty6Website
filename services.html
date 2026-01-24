@@ -321,6 +321,25 @@
             height: 100%; 
         }
 
+        /* Vac Truck: Stack image on top of text for horizontal image */
+        #vac-truck.service-category {
+            grid-template-columns: 1fr;
+        }
+
+        #vac-truck .service-image-container {
+            order: 1;
+        }
+
+        #vac-truck .service-text-content {
+            order: 2;
+        }
+
+        #vac-truck .service-image-container img {
+            height: auto;
+            width: 100%;
+            object-fit: cover;
+        }
+
         .service-category h2 {
             color: var(--accent-color);
             font-size: 2rem;
@@ -593,6 +612,7 @@
                             <li><a href="services.html#crew-truck-services">Crew Truck Services</a></li>
                             <li><a href="services.html#general-labour">General Labour</a></li>
                             <li><a href="services.html#hot-shot">Hot Shot Services</a></li>
+                            <li><a href="services.html#vac-truck">Vacuum Truck Services</a></li>
                         </ul>
                     </li>
                     <li><a href="about.html">About Us</a></li>
@@ -683,6 +703,45 @@
                 </div>
             </div>
 
+            <!-- Service Category 4: Vacuum Truck Services -->
+            <div id="vac-truck" class="service-category">
+                <div class="service-text-content">
+                    <h2>Vacuum Truck Services</h2>
+                    <p>Loyalty 6 Energy Services delivers combo vac and fluid management services for oilfield and industrial operations across BC and Alberta. Our vacuum trucks and pup configurations provide high-capacity vacuum, fluid hauling, and solids control for demanding field environments.</p>
+                    <p>We support turnarounds, plant and facility cleaning, tank and vessel cleaning, sour fluid hauling, and spill response, with equipment built for both mobility and volume depending on site requirements.</p>
+                    <p>With experienced operators and 24/7 emergency response, Loyalty 6 mobilizes quickly to keep operations moving while maintaining strong safety and environmental standards. Whether it's scheduled maintenance or urgent cleanup, we provide reliable vacuum support that minimizes downtime and risk.</p>
+
+                    <div class="sub-service">
+                        <h3>Turnarounds</h3>
+                        <p>We provide essential vacuum truck support during major facility turnarounds, ensuring efficient cleanup and fluid management to help expedite return to full production. Our equipment and crews are available to support your turnaround schedule and minimize operational disruption.</p>
+                    </div>
+
+                    <div class="sub-service">
+                        <h3>Vessel Cleaning</h3>
+                        <p>Our specialized vacuum truck services include thorough vessel cleaning for tanks, separators, and other containment systems. We ensure complete removal of residues, fluids, and debris while maintaining strict safety and environmental protocols.</p>
+                    </div>
+
+                    <div class="sub-service">
+                        <h3>Facility Cleaning</h3>
+                        <p>Loyalty 6 offers comprehensive facility cleaning services using our powerful vacuum truck equipment. From routine maintenance cleaning to deep facility cleanouts, we help maintain clean, safe, and compliant operational environments.</p>
+                    </div>
+
+                    <div class="sub-service">
+                        <h3>Sour Fluid Hauling</h3>
+                        <p>Our vacuum trucks are equipped and certified for safe sour fluid hauling, meeting all regulatory requirements for handling and transporting sour fluids. We maintain strict safety protocols and proper documentation throughout the hauling process.</p>
+                    </div>
+
+                    <div class="sub-service">
+                        <h3>Spill and Debris Cleanup</h3>
+                        <p>With 24/7 emergency response capability, Loyalty 6 provides rapid spill and debris cleanup services. Our experienced operators and powerful 3-axle vac pumps ensure efficient containment and removal, helping protect the environment and restore safe working conditions quickly.</p>
+                    </div>
+                </div>
+                <div class="service-image-container">
+                    <!-- Vacuum Truck Image -->
+                    <img src="images/vactruck3.jpg" alt="Vacuum Truck Service Image">
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -716,6 +775,7 @@
                         <li><a href="services.html#crew-truck-services">Crew Truck Services</a></li>
                         <li><a href="services.html#general-labour">General Labour</a></li>
                         <li><a href="services.html#hot-shot">Hot Shot Services</a></li>
+                        <li><a href="services.html#vac-truck">Vacuum Truck Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">

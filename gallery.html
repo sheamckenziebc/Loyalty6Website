@@ -521,6 +521,16 @@
         // Gallery functionality
         const galleryData = [
             {
+                image: "vactruck1.jpg",
+                caption: "Loyalty 6 Vacuum Truck Services",
+                path: "images/"
+            },
+            {
+                image: "vactruck2.jpg",
+                caption: "Loyalty 6 Vacuum Truck and Pup Trailer",
+                path: "images/"
+            },
+            {
                 image: "crew-truck.jpeg",
                 caption: "Loyalty 6 Crew Truck Services"
             },
@@ -594,10 +604,10 @@
             }
         ];
 
-        function createGalleryItem(image, caption) {
+        function createGalleryItem(image, caption, path = "images/gallery/") {
             return `
                 <div class="gallery-item">
-                    <img src="images/gallery/${image}" alt="Loyalty 6 Gallery Image" data-image="images/gallery/${image}">
+                    <img src="${path}${image}" alt="${caption}" data-image="${path}${image}">
                 </div>
             `;
         }
@@ -630,7 +640,9 @@
         function navigateGallery(direction) {
             currentImageIndex += direction;
             if (currentImageIndex >= 0 && currentImageIndex < galleryData.length) {
-                const newImage = `images/gallery/${galleryData[currentImageIndex].image}`;
+                const item = galleryData[currentImageIndex];
+                const path = item.path || "images/gallery/";
+                const newImage = `${path}${item.image}`;
                 lightboxImage.src = newImage;
                 updateNavigationVisibility();
             }
@@ -670,7 +682,8 @@
         function initGallery() {
             const galleryGrid = document.getElementById('galleryGrid');
             galleryData.forEach((item, index) => {
-                galleryGrid.innerHTML += createGalleryItem(item.image, item.caption);
+                const path = item.path || "images/gallery/";
+                galleryGrid.innerHTML += createGalleryItem(item.image, item.caption, path);
             });
         }
 

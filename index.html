@@ -63,8 +63,14 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .service-card {
@@ -287,6 +293,7 @@
                             <li><a href="services.html#crew-truck-services">Crew Truck Services</a></li>
                             <li><a href="services.html#general-labour">General Labour</a></li>
                             <li><a href="services.html#hot-shot">Hot Shot Services</a></li>
+                            <li><a href="services.html#vac-truck">Vacuum Truck Services</a></li>
                         </ul>
                     </li>
                     <li><a href="about.html">About Us</a></li>
@@ -350,6 +357,15 @@
                     <h3>Hot Shot Services</h3>
                     <p>Reliable hotshot, delivery, and pilot truck services for urgent equipment, critical parts, or scheduled deliveries.</p>
                     <a href="services.html#hot-shot" class="btn-learn-more">Discover Hot Shot Delivery</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="icon">
+                        <i class="fas fa-truck-moving"></i>
+                    </div>
+                    <h3>Vacuum Truck Services</h3>
+                    <p>Professional combo vac services specializing in turnarounds, vessel cleaning, facility cleaning, sour fluid hauling, and spill cleanup with 24/7 emergency response. Both vacuum truck and 3 axel vacuum pup trailer availability.</p>
+                    <a href="services.html#vac-truck" class="btn-learn-more">Explore Vacuum Truck Services</a>
                 </div>
             </div>
         </div>
@@ -423,6 +439,7 @@
                         <li><a href="services.html#crew-truck-services">Crew Truck Services</a></li>
                         <li><a href="services.html#general-labour">General Labour</a></li>
                         <li><a href="services.html#hot-shot">Hot Shot Services</a></li>
+                        <li><a href="services.html#vac-truck">Vacuum Truck Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
